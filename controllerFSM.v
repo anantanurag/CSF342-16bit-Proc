@@ -46,25 +46,10 @@ parameter EX_SLL = 6'b10_0100;
 parameter EX_SRL = 6'b10_0101;
 parameter EX_SRA = 6'b10_0110;
 
-parameter MEM_ADD = 6'b01_0011;
-parameter MEM_ADDI1 = 6'b01_0100;
-parameter MEM_ADDI2 = 6'b01_0101;
-parameter MEM_SW = 6'b01_0110;
-parameter MEM_BEQ = 6'b01_0111;
-parameter MEM_BNQ = 6'b01_1000;
-parameter MEM_JMP = 6'b01_1001;
-parameter MEM_NAND = 6'b01_1010;
-parameter MEM_NANDI = 6'b01_1011;
-parameter MEM_OR = 6'b01_1110;
-parameter MEM_ORI = 6'b01_1111;
-parameter MEM_SUB = 6'b10_0000;
-parameter MEM_SUBI1 = 6'b10_0001;
-parameter MEM_SUBI2 = 6'b10_0010;
-parameter MEM_LW = 6'b10_0011;
-parameter MEM_SLL = 6'b10_0111;
-parameter MEM_SRL = 6'b10_1000;
-parameter MEM_SRA = 6'b10_1001;
 
+parameter MEM_SW = 6'b01_0110;
+parameter MEM_LW = 6'b10_0011;
+parameter MEM_RTYPE = 6'b10_1000;
 parameter WRITEBACK = 6'b11_1111;
 
 parameter OP_ADD = 4'b1000;
@@ -134,43 +119,28 @@ I_DECODE	:begin
 				default		: 	NextState <= I_FETCH;
 				endcase
 			end
-EX_ADD 		:NextState <= MEM_ADD;
-EX_ADDI1	:NextState <= MEM_ADDI1;
-EX_ADDI2 	:NextState <= MEM_ADDI2;
-EX_SUB 		:NextState <= MEM_SUB;
-EX_SUBI1 	:NextState <= MEM_SUBI1;
-EX_SUBI2	:NextState <= MEM_SUBI2;
-EX_SLL		:NextState <= MEM_SLL;
-EX_SRL		:NextState <= MEM_SRL;
-EX_SRA		:NextState <= MEM_SRA;
-EX_NAND 	:NextState <= MEM_NAND;
-EX_NANDI 	:NextState <= MEM_NANDI;
-EX_OR 		:NextState <= MEM_OR;
-EX_ORI		:NextState <= MEM_ORI;
-EX_BEQ 		:NextState <= MEM_BEQ;
-EX_BNQ		:NextState <= MEM_BNQ;
-EX_JMP		:NextState <= MEM_JMP;
+EX_ADD 		:NextState <= MEM_RTYPE;
+EX_ADDI1	:NextState <= MEM_RTYPE;
+EX_ADDI2 	:NextState <= MEM_RTYPE;
+EX_SUB 		:NextState <= MEM_RTYPE;
+EX_SUBI1 	:NextState <= MEM_RTYPE;
+EX_SUBI2	:NextState <= MEM_RTYPE;
+EX_SLL		:NextState <= MEM_RTYPE;
+EX_SRL		:NextState <= MEM_RTYPE;
+EX_SRA		:NextState <= MEM_RTYPE;
+EX_NAND 	:NextState <= MEM_RTYPE;
+EX_NANDI 	:NextState <= MEM_RTYPE;
+EX_OR 		:NextState <= MEM_RTYPE;
+EX_ORI		:NextState <= MEM_RTYPE;
+EX_BEQ 		:NextState <= I_FETCH;
+EX_BNQ		:NextState <= I_FETCH;
+EX_JMP		:NextState <= I_FETCH;
 EX_LW_SW	:begin
 				if (opcode == OP_LW) NextState <= MEM_LW;
 				else if (opcode == OP_SW) NextState <= MEM_SW;
 				else NextState <= I_FETCH;
 			 end
-MEM_ADD 	:NextState <= I_FETCH;
-MEM_ADDI1 	:NextState <= I_FETCH;
-MEM_ADDI2 	:NextState <= I_FETCH;
-MEM_SUB 	:NextState <= I_FETCH;
-MEM_SUBI1	:NextState <= I_FETCH;
-MEM_SUBI2	:NextState <= I_FETCH;
-MEM_SLL 	:NextState <= I_FETCH;
-MEM_SRL 	:NextState <= I_FETCH;
-MEM_SRA		:NextState <= I_FETCH;
-MEM_NAND 	:NextState <= I_FETCH;
-MEM_NANDI 	:NextState <= I_FETCH;
-MEM_OR 		:NextState <= I_FETCH;
-MEM_ORI 	:NextState <= I_FETCH;
-MEM_BEQ 	:NextState <= I_FETCH;
-MEM_BNQ 	:NextState <= I_FETCH;
-MEM_JMP 	:NextState <= I_FETCH;
+MEM_RTYPE 	:NextState <= I_FETCH;
 MEM_SW 		:NextState <= I_FETCH;
 MEM_LW 		:NextState <= WRITEBACK;
 WRITEBACK	:NextState <= I_FETCH;
@@ -341,7 +311,7 @@ EX_SUBI2	:begin
 				WriteA 		<= 1'b1;
 				WriteB 		<= 1'b1;
 			end
-EX_SLL	:begin // NOT MADE YET
+EX_SLL		:begin // NOT MADE YET
 				PCSrc		<= 2'bxx;
 				ALUOp		<= 3'b001;
 				sign_extend	<= 1'b0;
@@ -361,7 +331,7 @@ EX_SLL	:begin // NOT MADE YET
 				WriteA 		<= 1'b1;
 				WriteB 		<= 1'b1;
 			end
-EX_SRL	:begin // NOT MADE YET
+EX_SRL		:begin // NOT MADE YET
 				PCSrc		<= 2'bxx;
 				ALUOp		<= 3'b001;
 				sign_extend	<= 1'b0;
@@ -381,7 +351,7 @@ EX_SRL	:begin // NOT MADE YET
 				WriteA 		<= 1'b1;
 				WriteB 		<= 1'b1;
 			end
-EX_SRA	:begin // NOT MADE YET
+EX_SRA		:begin // NOT MADE YET
 				PCSrc		<= 2'bxx;
 				ALUOp		<= 3'b001;
 				sign_extend	<= 1'b0;
@@ -400,6 +370,246 @@ EX_SRA	:begin // NOT MADE YET
 				RegWrite 	<= 1'b0;
 				WriteA 		<= 1'b1;
 				WriteB 		<= 1'b1;
+			end
+EX_NAND		:begin
+				PCSrc		<= 2'bxx;
+				ALUOp		<= 3'b010;
+				sign_extend	<= 1'bx;
+				ALUSrcA		<= 1'b1;
+				ALUSrcB		<= 3'b000;
+				ReadR1		<= 2'b00;
+				ReadR2		<= 1'b0;
+				RegWriteDst	<= 1'b1;
+				MemToReg	<= 1'bx;
+				PCBEqCond	<= 1'b0;
+				PCBNqCond	<= 1'b0;
+				PCWrite		<= 1'b0;
+				MemWrite	<= 1'b0;
+				MemRead		<= 1'b0;
+				IRWrite		<= 1'b0;
+				RegWrite 	<= 1'b0;
+				WriteA 		<= 1'b1;
+				WriteB 		<= 1'b1;
+			end
+EX_NANDI	:begin
+				PCSrc		<= 2'bxx;
+				ALUOp		<= 3'b010;
+				sign_extend	<= 1'bx;
+				ALUSrcA		<= 1'b1;
+				ALUSrcB		<= 3'b010;
+				ReadR1		<= 2'b01;
+				ReadR2		<= 1'bx;
+				RegWriteDst	<= 1'b1;
+				MemToReg	<= 1'bx;
+				PCBEqCond	<= 1'b0;
+				PCBNqCond	<= 1'b0;
+				PCWrite		<= 1'b0;
+				MemWrite	<= 1'b0;
+				MemRead		<= 1'b0;
+				IRWrite		<= 1'b0;
+				RegWrite 	<= 1'b0;
+				WriteA 		<= 1'b1;
+				WriteB 		<= 1'b1;
+			end
+EX_OR		:begin
+				PCSrc		<= 2'bxx;
+				ALUOp		<= 3'b101;
+				sign_extend	<= 1'bx;
+				ALUSrcA		<= 1'b1;
+				ALUSrcB		<= 3'b000;
+				ReadR1		<= 2'b00;
+				ReadR2		<= 1'b0;
+				RegWriteDst	<= 1'b1;
+				MemToReg	<= 1'bx;
+				PCBEqCond	<= 1'b0;
+				PCBNqCond	<= 1'b0;
+				PCWrite		<= 1'b0;
+				MemWrite	<= 1'b0;
+				MemRead		<= 1'b0;
+				IRWrite		<= 1'b0;
+				RegWrite 	<= 1'b0;
+				WriteA 		<= 1'b1;
+				WriteB 		<= 1'b1;
+			end
+EX_ORI		:begin
+				PCSrc		<= 2'bxx;
+				ALUOp		<= 3'b101;
+				sign_extend	<= 1'b1;
+				ALUSrcA		<= 1'b1;
+				ALUSrcB		<= 3'b010;
+				ReadR1		<= 2'b01;
+				ReadR2		<= 1'b0;
+				RegWriteDst	<= 1'b1;
+				MemToReg	<= 1'bx;
+				PCBEqCond	<= 1'b0;
+				PCBNqCond	<= 1'b0;
+				PCWrite		<= 1'b0;
+				MemWrite	<= 1'b0;
+				MemRead		<= 1'b0;
+				IRWrite		<= 1'b0;
+				RegWrite 	<= 1'b0;
+				WriteA 		<= 1'b1;
+				WriteB 		<= 1'b1;
+			end
+EX_BEQ		:begin
+				PCSrc		<= 2'b00;
+				ALUOp		<= 3'b001;
+				sign_extend	<= 1'bx;
+				ALUSrcA		<= 1'b1;
+				ALUSrcB		<= 3'b000;
+				ReadR1		<= 2'b01;
+				ReadR2		<= 1'bx;
+				RegWriteDst	<= 1'bx;
+				MemToReg	<= 1'bx;
+				PCBEqCond	<= 1'b1;
+				PCBNqCond	<= 1'b0;
+				PCWrite		<= 1'b0;
+				MemWrite	<= 1'b0;
+				MemRead		<= 1'b0;
+				IRWrite		<= 1'b0;
+				RegWrite 	<= 1'b0;
+				WriteA 		<= 1'b0;
+				WriteB 		<= 1'b0;
+			end
+EX_BNQ		:begin
+				PCSrc		<= 2'b00;
+				ALUOp		<= 3'b001;
+				sign_extend	<= 1'bx;
+				ALUSrcA		<= 1'b1;
+				ALUSrcB		<= 3'b000;
+				ReadR1		<= 2'b01;
+				ReadR2		<= 1'bx;
+				RegWriteDst	<= 1'bx;
+				MemToReg	<= 1'bx;
+				PCBEqCond	<= 1'b0;
+				PCBNqCond	<= 1'b1;
+				PCWrite		<= 1'b0;
+				MemWrite	<= 1'b0;
+				MemRead		<= 1'b0;
+				IRWrite		<= 1'b0;
+				RegWrite 	<= 1'b0;
+				WriteA 		<= 1'b0;
+				WriteB 		<= 1'b0;
+			end
+EX_JMP		:begin
+				PCSrc		<= 2'b01;
+				ALUOp		<= 3'b000;
+				sign_extend	<= 1'bx;
+				ALUSrcA		<= 1'b0;
+				ALUSrcB		<= 3'b100;
+				ReadR1		<= 2'bxx;
+				ReadR2		<= 1'bx;
+				RegWriteDst	<= 1'bx;
+				MemToReg	<= 1'bx;
+				PCBEqCond	<= 1'b0;
+				PCBNqCond	<= 1'b0;
+				PCWrite		<= 1'b1;
+				MemWrite	<= 1'b0;
+				MemRead		<= 1'b0;
+				IRWrite		<= 1'b0;
+				RegWrite 	<= 1'b0;
+				WriteA 		<= 1'b0;
+				WriteB 		<= 1'b0;
+			end
+EX_LW_SW	:begin
+				PCSrc		<= 2'bxx;
+				ALUOp		<= 3'b000;
+				sign_extend	<= 1'b1;
+				ALUSrcA		<= 1'b1;
+				ALUSrcB		<= 3'b011;
+				ReadR1		<= 2'b10;
+				ReadR2		<= 1'b1;
+				RegWriteDst	<= 1'b0;
+				MemToReg	<= 1'bx;
+				PCBEqCond	<= 1'b0;
+				PCBNqCond	<= 1'b0;
+				PCWrite		<= 1'b0;
+				MemWrite	<= 1'b0;
+				MemRead		<= 1'b0;
+				IRWrite		<= 1'b0;
+				RegWrite 	<= 1'b0;
+				WriteA 		<= 1'b1;
+				WriteB 		<= 1'b1;
+			end
+MEM_RTYPE	:begin
+				PCSrc		<= 2'bxx;
+				ALUOp		<= 3'bxxx;
+				sign_extend	<= 1'bx;
+				ALUSrcA		<= 1'bx;
+				ALUSrcB		<= 3'bxxx;
+				ReadR1		<= 2'bxx;
+				ReadR2		<= 1'bx;
+				RegWriteDst	<= 1'bx;
+				MemToReg	<= 1'bx;
+				PCBEqCond	<= 1'bx;
+				PCBNqCond	<= 1'bx;
+				PCWrite		<= 1'b0;
+				MemWrite	<= 1'b0;
+				MemRead		<= 1'b0;
+				IRWrite		<= 1'b0;
+				RegWrite 	<= 1'b0;
+				WriteA 		<= 1'b0;
+				WriteB 		<= 1'b0;
+			end
+MEM_LW		:begin
+				PCSrc		<= 2'bxx;
+				ALUOp		<= 3'bxxx;
+				sign_extend	<= 1'bx;
+				ALUSrcA		<= 1'bx;
+				ALUSrcB		<= 3'bxxx;
+				ReadR1		<= 2'bxx;
+				ReadR2		<= 1'bx;
+				RegWriteDst	<= 1'bx;
+				MemToReg	<= 1'bx;
+				PCBEqCond	<= 1'bx;
+				PCBNqCond	<= 1'bx;
+				PCWrite		<= 1'b0;
+				MemWrite	<= 1'b0;
+				MemRead		<= 1'b1;
+				IRWrite		<= 1'b0;
+				RegWrite 	<= 1'b0;
+				WriteA 		<= 1'b0;
+				WriteB 		<= 1'b0;
+			end
+MEM_SW		:begin
+				PCSrc		<= 2'bxx;
+				ALUOp		<= 3'bxxx;
+				sign_extend	<= 1'bx;
+				ALUSrcA		<= 1'bx;
+				ALUSrcB		<= 3'bxxx;
+				ReadR1		<= 2'bxx;
+				ReadR2		<= 1'b1;
+				RegWriteDst	<= 1'bx;
+				MemToReg	<= 1'bx;
+				PCBEqCond	<= 1'bx;
+				PCBNqCond	<= 1'bx;
+				PCWrite		<= 1'b0;
+				MemWrite	<= 1'b1;
+				MemRead		<= 1'b0;
+				IRWrite		<= 1'b0;
+				RegWrite 	<= 1'b0;
+				WriteA 		<= 1'b0;
+				WriteB 		<= 1'b0;
+			end
+WRITEBACK	:begin
+				PCSrc		<= 2'bxx;
+				ALUOp		<= 3'bxxx;
+				sign_extend	<= 1'bx;
+				ALUSrcA		<= 1'bx;
+				ALUSrcB		<= 3'bxxx;
+				ReadR1		<= 2'bxx;
+				ReadR2		<= 1'bx;
+				RegWriteDst	<= 1'b1;
+				MemToReg	<= 1'bx;
+				PCBEqCond	<= 1'bx;
+				PCBNqCond	<= 1'bx;
+				PCWrite		<= 1'b0;
+				MemWrite	<= 1'b0;
+				MemRead		<= 1'b0;
+				IRWrite		<= 1'b0;
+				RegWrite 	<= 1'b1;
+				WriteA 		<= 1'b0;
+				WriteB 		<= 1'b0;
 			end
 end
 
