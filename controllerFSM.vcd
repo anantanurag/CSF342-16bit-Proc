@@ -1,0 +1,381 @@
+$date
+	Tue Mar 27 04:45:36 2018
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	10ps
+$end
+$scope module tb_controllerFSM $end
+$var wire 3 ! ALUOp [2:0] $end
+$var wire 1 " ALUSrcA $end
+$var wire 3 # ALUSrcB [2:0] $end
+$var wire 6 $ CurrentState [5:0] $end
+$var wire 1 % IRWrite $end
+$var wire 1 & MemRead $end
+$var wire 1 ' MemToReg $end
+$var wire 1 ( MemWrite $end
+$var wire 6 ) NextState [5:0] $end
+$var wire 1 * PCBEqCond $end
+$var wire 1 + PCBNqCond $end
+$var wire 2 , PCSrc [1:0] $end
+$var wire 1 - PCWrite $end
+$var wire 2 . ReadR1 [1:0] $end
+$var wire 1 / ReadR2 $end
+$var wire 1 0 RegWrite $end
+$var wire 1 1 RegWriteDst $end
+$var wire 1 2 WriteA $end
+$var wire 1 3 WriteB $end
+$var wire 1 4 sign_extend $end
+$var reg 1 5 clk $end
+$var reg 4 6 func_field [3:0] $end
+$var reg 4 7 opcode [3:0] $end
+$var reg 1 8 rst $end
+$scope module uut $end
+$var wire 1 9 clk $end
+$var wire 4 : func_field [3:0] $end
+$var wire 4 ; opcode [3:0] $end
+$var wire 1 < rst $end
+$var reg 3 = ALUOp [2:0] $end
+$var reg 1 > ALUSrcA $end
+$var reg 3 ? ALUSrcB [2:0] $end
+$var reg 6 @ CurrentState [5:0] $end
+$var reg 1 A IRWrite $end
+$var reg 1 B MemRead $end
+$var reg 1 C MemToReg $end
+$var reg 1 D MemWrite $end
+$var reg 6 E NextState [5:0] $end
+$var reg 1 F PCBEqCond $end
+$var reg 1 G PCBNqCond $end
+$var reg 2 H PCSrc [1:0] $end
+$var reg 1 I PCWrite $end
+$var reg 2 J ReadR1 [1:0] $end
+$var reg 1 K ReadR2 $end
+$var reg 1 L RegWrite $end
+$var reg 1 M RegWriteDst $end
+$var reg 1 N WriteA $end
+$var reg 1 O WriteB $end
+$var reg 1 P sign_extend $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+xP
+0O
+0N
+xM
+0L
+xK
+bx J
+1I
+b0 H
+0G
+0F
+b1 E
+0D
+xC
+0B
+0A
+b0 @
+b1 ?
+0>
+b0 =
+1<
+bx ;
+bx :
+09
+18
+bx 7
+bx 6
+05
+x4
+03
+02
+x1
+00
+x/
+bx .
+1-
+b0 ,
+0+
+0*
+b1 )
+0(
+x'
+0&
+0%
+b0 $
+b1 #
+0"
+b0 !
+$end
+#500
+1O
+13
+1N
+12
+0I
+0-
+0K
+0/
+b0 J
+b0 .
+bx =
+bx !
+bx H
+bx ,
+b0 E
+b0 )
+b1 @
+b1 $
+15
+19
+08
+0<
+#1000
+b10 E
+b10 )
+05
+09
+b1000 7
+b1000 ;
+#1500
+1M
+11
+b10 ?
+b10 #
+1>
+1"
+b0 =
+b0 !
+b101000 E
+b101000 )
+b10 @
+b10 $
+15
+19
+#2000
+05
+09
+#2500
+0O
+03
+0N
+02
+xG
+x+
+xF
+x*
+xM
+x1
+xK
+x/
+bx J
+bx .
+bx ?
+bx #
+x>
+x"
+bx =
+bx !
+b0 E
+b0 )
+b101000 @
+b101000 $
+15
+19
+#3000
+05
+09
+#3500
+1I
+1-
+0G
+0+
+0F
+0*
+b1 ?
+b1 #
+0>
+0"
+b0 =
+b0 !
+b0 H
+b0 ,
+b1 E
+b1 )
+b0 @
+b0 $
+15
+19
+#4000
+05
+09
+#4500
+1O
+13
+1N
+12
+0I
+0-
+0K
+0/
+b0 J
+b0 .
+bx =
+bx !
+bx H
+bx ,
+b10 E
+b10 )
+b1 @
+b1 $
+15
+19
+#5000
+05
+09
+#5500
+1M
+11
+b10 ?
+b10 #
+1>
+1"
+b0 =
+b0 !
+b101000 E
+b101000 )
+b10 @
+b10 $
+15
+19
+#6000
+05
+09
+#6500
+0O
+03
+0N
+02
+xG
+x+
+xF
+x*
+xM
+x1
+xK
+x/
+bx J
+bx .
+bx ?
+bx #
+x>
+x"
+bx =
+bx !
+b0 E
+b0 )
+b101000 @
+b101000 $
+15
+19
+#7000
+05
+09
+#7500
+1I
+1-
+0G
+0+
+0F
+0*
+b1 ?
+b1 #
+0>
+0"
+b0 =
+b0 !
+b0 H
+b0 ,
+b1 E
+b1 )
+b0 @
+b0 $
+15
+19
+#8000
+05
+09
+#8500
+1O
+13
+1N
+12
+0I
+0-
+0K
+0/
+b0 J
+b0 .
+bx =
+bx !
+bx H
+bx ,
+b10 E
+b10 )
+b1 @
+b1 $
+15
+19
+#9000
+05
+09
+#9500
+1M
+11
+b10 ?
+b10 #
+1>
+1"
+b0 =
+b0 !
+b101000 E
+b101000 )
+b10 @
+b10 $
+15
+19
+#10000
+05
+09
+#10500
+0O
+03
+0N
+02
+xG
+x+
+xF
+x*
+xM
+x1
+xK
+x/
+bx J
+bx .
+bx ?
+bx #
+x>
+x"
+bx =
+bx !
+b0 E
+b0 )
+b101000 @
+b101000 $
+15
+19
+#11000
