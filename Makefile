@@ -1,5 +1,7 @@
-all: control regfile
+all: control regfile muxprealu
 	# 
+muxprealu: MUXpreALU.v
+	iverilog -o MUXpreALU.vvp MUXpreALU.v
 regfile: registerFile.v
 	iverilog -o registerFile.vvp registerFile.v
 control: controllerFSM.v
