@@ -10,7 +10,7 @@ input wire C_IMRead;
 input wire clk, rst;
 
 reg [15:0] memory[0:8192]; // 8192 = 8*1024, 8k*2bytes=16kB
-initial $readmemh("instruction_data.txt", memory);
+initial $readmemh("instruction_file.txt", memory);
 
 always @(posedge clk or rst) begin
 	if (rst == 1) begin
