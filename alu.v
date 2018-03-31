@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 module alu (	out,z,
 				a,b,
 				alu_op,
@@ -11,15 +10,6 @@ module alu (	out,z,
 	input wire [15:0] a,b;
 	input wire [2:0] alu_op;
 	input wire clk;
-=======
-module ALU(y,z,a,b,alu_op, clk);
-
-output reg [15:0] y;
-output reg z;
-input [15:0] a,b;
-input wire [2:0] alu_op;
-input wire clk;
->>>>>>> 6f96511e3a78b3f14236750bddb9c52be6212cef
 
 	parameter ADD 	= 3'b000 ;
 	parameter SUB 	= 3'b001 ;
@@ -69,14 +59,7 @@ input wire clk;
 					out <= 16'd0;
 					z <= 1'bz;
 				end
-<<<<<<< HEAD
 		endcase
 	end
-=======
-endcase
-end	
 
-
-					
->>>>>>> 6f96511e3a78b3f14236750bddb9c52be6212cef
 endmodule
