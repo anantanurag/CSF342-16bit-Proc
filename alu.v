@@ -1,46 +1,64 @@
-module alu(y,z,a,b,alu_op);
+module alu (	out,z,
+				a,b,
+				alu_op,
+				clk
+				);
 
-output reg [15:0] y;
-output reg z;
-input [15:0] a,b;
+	output reg [15:0] out;
+	output reg z;
+	
+	input wire [15:0] a,b;
+	input wire [2:0] alu_op;
+	input wire clk;
 
-always@(posedge clk)
-begin
-case(alu_op)
-	3'b000	:	begin	
-					y <= a+b;
-					z <= (y==0);
+	parameter ADD 	= 3'b000 ;
+	parameter SUB 	= 3'b001 ;
+	parameter SHR 	= 3'b010 ;// shift right a by b bits
+	parameter SHL 	= 3'b011 ;// shift left a by b bits 
+	parameter NAND 	= 3'b100 ;
+	parameter OR 	= 3'b101 ;
+	parameter DIR 	= 3'b110 ;
+	parameter SAR	= 3'b111 ;// shift arithmetic right
+
+	always@(posedge clk)
+	begin
+		case(alu_op)
+		ADD	:	begin	
+					out <= a+b;
+					z <= (out==0);
 				end
-	3'b001	: 	begin
-					y <= a-b;
-					z <= (y==0);
+		SUB	: 	begin
+					out <= a-b;
+					z <= (out==0);
 				end
-	3'b010	:	begin
-					y <= a>>b;
-					z <= (y==0);
+		SHR	:	begin
+					out <= a>>b;
+					z <= (out==0);
 				end
-	3'b011	:	begin
-					y <= a<<b;
-					z <= (y==0);
+		SHL	:	begin
+					out <= a<<b;
+					z <= (out==0);
 				end
-	3'b100	:	begin
-					y <= ~(a&b);
-					z <= (y==0);
+		NAND:	begin
+					out <= ~(a&b);
+					z <= (out==0);
 				end
-	3'b101	:	begin
-					y <= a|b;
-					z <= (y==0);
+		OR	:	begin
+					out <= a|b;
+					z <= (out==0);
 				end
-	3'b110	:	begin
-					y <= a;
-					z <= (y==0);
+		DIR	:	begin
+					out <= a;
+					z <= (out==0);
 				end
-	default :	begin
-					y <= 16'd0;
+		SAR	:	begin
+					out <= {a[15],a[15:1]};
+					z <= (out==0);
+				end
+		default:begin
+					out <= 16'd0;
 					z <= 1'bz;
 				end
-endcase
-end	
-
-
-					
+		endcase
+	end
+endmodule
