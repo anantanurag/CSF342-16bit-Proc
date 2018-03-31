@@ -19,6 +19,6 @@ Written Pre ALU MUX. This file contains combinational logic that will take place
 
 31 March 2018
 
-**In cases where there is nothing to do when control signal has disserted, i have done memory[i] = memory[i] to fill something in the else block after the if statement. This may be problematic**
+**In cases where there is nothing to do when control signal has deasserted, i have done memory[i] = memory[i] to fill something in the else block after the if statement. This may be problematic**
 
 -Anant
