@@ -1,8 +1,10 @@
-module alu(y,z,a,b,alu_op);
+module ALU(y,z,a,b,alu_op, clk);
 
 output reg [15:0] y;
 output reg z;
 input [15:0] a,b;
+input wire [2:0] alu_op;
+input wire clk;
 
 always@(posedge clk)
 begin
@@ -44,3 +46,4 @@ end
 
 
 					
+endmodule

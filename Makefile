@@ -1,5 +1,9 @@
-all: control regfile muxprealu
+all: alu control regfile muxprealu instructionRegister
 	# 
+alu: alu.v
+	iverilog -o alu.vvp alu.v
+instructionRegister: instructionRegister.v
+	iverilog -o instructionRegister.vvp instructionRegister.v
 muxprealu: MUXpreALU.v
 	iverilog -o MUXpreALU.vvp MUXpreALU.v
 regfile: registerFile.v
