@@ -6,15 +6,8 @@ module tb_alu();
 	wire z;
 	reg [15:0] a,b;
 	reg [2:0] op;
-	reg clk;
 
-	alu uut(out,z,a,b,op,clk);
-
-	initial
-		begin
-		#00 clk = 1'b0;
-		forever #10 clk = ~clk;
-		end
+	alu uut(out,z,a,b,op);
 
 	initial
 		begin
@@ -39,8 +32,7 @@ endmodule
 
 module alu (	out,z,
 				a,b,
-				alu_op,
-				clk
+				alu_op
 				);
 
 	output reg [15:0] out;
@@ -48,7 +40,6 @@ module alu (	out,z,
 	
 	input wire [15:0] a,b;
 	input wire [2:0] alu_op;
-	input wire clk;
 
 	parameter ADD 	= 3'b000 ;
 	parameter SUB 	= 3'b001 ;
@@ -59,7 +50,7 @@ module alu (	out,z,
 	parameter DIR 	= 3'b110 ;
 	parameter SAR	= 3'b111 ;// shift arithmetic right
 
-	always@(posedge clk)
+	always@(*)
 	begin
 		case(alu_op)
 		ADD	:	begin	
@@ -91,7 +82,7 @@ module alu (	out,z,
 					z <= (out==0);
 				end
 		SAR	:	begin
-					out <= {a[1],a[15:1]};
+					out <= a>>>b;
 					z <= (out==0);
 				end
 		default:begin
