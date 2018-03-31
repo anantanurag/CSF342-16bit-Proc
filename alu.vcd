@@ -1,0 +1,115 @@
+$date
+	Sat Mar 31 22:17:46 2018
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	10ps
+$end
+$scope module tb_alu $end
+$var wire 1 ! z $end
+$var wire 16 " out [15:0] $end
+$var reg 16 # a [15:0] $end
+$var reg 16 $ b [15:0] $end
+$var reg 1 % clk $end
+$var reg 3 & op [2:0] $end
+$scope module uut $end
+$var wire 16 ' a [15:0] $end
+$var wire 3 ( alu_op [2:0] $end
+$var wire 16 ) b [15:0] $end
+$var wire 1 % clk $end
+$var reg 16 * out [15:0] $end
+$var reg 1 ! z $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx *
+bx )
+bx (
+bx '
+bx &
+0%
+bx $
+bx #
+bx "
+x!
+$end
+#1000
+z!
+b0 "
+b0 *
+1%
+#2000
+0%
+b101 $
+b101 )
+b110110 #
+b110110 '
+b0 &
+b0 (
+#3000
+1!
+b111011 "
+b111011 *
+1%
+#4000
+0%
+b1 &
+b1 (
+#5000
+0!
+b110001 "
+b110001 *
+1%
+#6000
+0%
+b10 &
+b10 (
+#7000
+b1 "
+b1 *
+1%
+#8000
+0%
+b11 &
+b11 (
+#9000
+b11011000000 "
+b11011000000 *
+1%
+#10000
+0%
+b100 &
+b100 (
+#11000
+b1111111111111011 "
+b1111111111111011 *
+1%
+#12000
+0%
+b101 &
+b101 (
+#13000
+b110111 "
+b110111 *
+1%
+#14000
+0%
+b110 &
+b110 (
+#15000
+b110110 "
+b110110 *
+1%
+#16000
+0%
+b111 &
+b111 (
+#17000
+b1000000000011011 "
+b1000000000011011 *
+1%
+#18000
