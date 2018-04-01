@@ -3,16 +3,12 @@ module tb_dataMemory();
 
 reg [15:0] A_DataAddress;
 reg [15:0] D_WriteData;
-reg C_DMRead, C_DMWrite, clk, rst;
+reg C_DMRead, C_DMWrite, rst;
 wire [15:0] D_Data;
 
-dataMemory uut (D_Data,	A_DataAddress,D_WriteData,C_DMRead, C_DMWrite,clk, rst);
+dataMemory uut (D_Data,	A_DataAddress,D_WriteData,C_DMRead, C_DMWrite, rst);
 
-initial
-begin
-	#00 clk <= 1'b0;
-	forever #10 clk <= ~clk;
-end
+
 
 initial
 begin
@@ -60,19 +56,19 @@ module dataMemory(	D_Data,
 					A_DataAddress,
 					D_WriteData,
 					C_DMRead, C_DMWrite,
-					clk, rst
+					rst
 					);
 
 output reg [15:0] D_Data;
 input wire [15:0] A_DataAddress;
 input wire [15:0] D_WriteData;
 input wire C_DMRead, C_DMWrite;
-input wire clk, rst;
+input wire rst;
 
 reg [15:0] memory[0:8192]; // 8192 = 8*1024, 8k*2bytes=16kB
 initial $readmemh("data_file.txt", memory);
 
-always @(posedge clk or rst) begin
+always @(*) begin
 	if (rst == 1) begin
 		D_Data = 16'b0000_0000_0000_0000;
 	end
@@ -80,16 +76,16 @@ always @(posedge clk or rst) begin
 		if (C_DMWrite == 1) begin
 			memory[A_DataAddress] <= D_WriteData;
 		end
-		else begin
-			memory[A_DataAddress] <= memory[A_DataAddress];
-		end
+		// else begin
+		// 	memory[A_DataAddress] <= memory[A_DataAddress];
+		// end
 
 		if (C_DMRead == 1) begin
 			D_Data <= memory[A_DataAddress];
 		end
-		else begin
-			D_Data <= D_Data;
-		end
+		// else begin
+		// 	D_Data <= D_Data;
+		// end
 	end 
 end
 
