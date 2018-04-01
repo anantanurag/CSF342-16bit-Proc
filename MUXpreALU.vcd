@@ -1,0 +1,190 @@
+$date
+	Sun Apr  1 20:23:48 2018
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	10ps
+$end
+$scope module left_1b_shift $end
+$var wire 16 ! L1S_Out [15:0] $end
+$var wire 16 " SE_Out [15:0] $end
+$upscope $end
+$scope module sign_extend_12bto16b $end
+$var wire 16 # JUMP_SE_Out [15:0] $end
+$var wire 12 $ instr11to0 [11:0] $end
+$upscope $end
+$scope module sign_extend_8bto16b $end
+$var wire 16 % SE_Out [15:0] $end
+$var wire 8 & instr7to0 [7:0] $end
+$upscope $end
+$scope module tb_MUXpreALU $end
+$var wire 16 ' ALU_1_IN [15:0] $end
+$var wire 16 ( ALU_2_IN [15:0] $end
+$var reg 1 ) C_ALUSrc_A $end
+$var reg 3 * C_ALUSrc_B [2:0] $end
+$var reg 2 + C_RegDstRead1R [1:0] $end
+$var reg 1 , C_RegDstRead2R $end
+$var reg 1 - C_SignExtend $end
+$var reg 16 . D_BT [15:0] $end
+$var reg 16 / D_JUMP_SE_Out [15:0] $end
+$var reg 16 0 D_L1S_Out [15:0] $end
+$var reg 16 1 D_Offset [15:0] $end
+$var reg 16 2 D_ReadReg1RT [15:0] $end
+$var reg 16 3 D_ReadReg2RT [15:0] $end
+$var reg 16 4 D_RegSW [15:0] $end
+$var reg 16 5 D_SE_Out [15:0] $end
+$var reg 16 6 D_USE_Out [15:0] $end
+$var reg 16 7 PC [15:0] $end
+$scope module uut $end
+$var wire 1 8 C_ALUSrc_A $end
+$var wire 3 9 C_ALUSrc_B [2:0] $end
+$var wire 2 : C_RegDstRead1R [1:0] $end
+$var wire 1 ; C_RegDstRead2R $end
+$var wire 1 < C_SignExtend $end
+$var wire 16 = D_BT [15:0] $end
+$var wire 16 > D_JUMP_SE_Out [15:0] $end
+$var wire 16 ? D_L1S_Out [15:0] $end
+$var wire 16 @ D_Offset [15:0] $end
+$var wire 16 A D_ReadReg1RT [15:0] $end
+$var wire 16 B D_ReadReg2RT [15:0] $end
+$var wire 16 C D_RegSW [15:0] $end
+$var wire 16 D D_SE_Out [15:0] $end
+$var wire 16 E D_USE_Out [15:0] $end
+$var wire 16 F PC [15:0] $end
+$var reg 16 G ALU_1_IN [15:0] $end
+$var reg 16 H ALU_2_IN [15:0] $end
+$var reg 16 I M1_Out [15:0] $end
+$var reg 16 J M2_Out [15:0] $end
+$var reg 16 K M3_Out [15:0] $end
+$upscope $end
+$upscope $end
+$scope module unsign_extend_8bto16b $end
+$var wire 16 L USE_Out [15:0] $end
+$var wire 8 M instr7to0 [7:0] $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bz M
+b0zzzzzzzz L
+b111011101110111 K
+b0 J
+b0 I
+b0 H
+b0 G
+b1111111111111111 F
+b111011101110111 E
+b1000100010001000 D
+b1010101010101010 C
+b1011101110111011 B
+b1110111011101110 A
+b1100110011001100 @
+b110011001100110 ?
+b1001100110011001 >
+b1101110111011101 =
+0<
+x;
+bx :
+bx 9
+x8
+b1111111111111111 7
+b111011101110111 6
+b1000100010001000 5
+b1010101010101010 4
+b1011101110111011 3
+b1110111011101110 2
+b1100110011001100 1
+b110011001100110 0
+b1001100110011001 /
+b1101110111011101 .
+0-
+x,
+bx +
+bx *
+x)
+b0 (
+b0 '
+bz &
+bz %
+bz $
+bz #
+bz "
+bz0 !
+$end
+#1000
+b1000100010001000 K
+1-
+1<
+#2000
+b1110111011101110 I
+b0 +
+b0 :
+#3000
+b1101110111011101 I
+b1 +
+b1 :
+#4000
+b1100110011001100 I
+b10 +
+b10 :
+#5000
+b0 I
+b11 +
+b11 :
+#6000
+b1011101110111011 J
+0,
+0;
+#7000
+b1010101010101010 J
+1,
+1;
+#8000
+b1111111111111111 G
+b1111111111111111 '
+0)
+08
+#9000
+b0 G
+b0 '
+1)
+18
+#10000
+b1010101010101010 H
+b1010101010101010 (
+b0 *
+b0 9
+#11000
+b10 H
+b10 (
+b1 *
+b1 9
+#12000
+b1000100010001000 H
+b1000100010001000 (
+b10 *
+b10 9
+#13000
+b110011001100110 H
+b110011001100110 (
+b11 *
+b11 9
+#14000
+b1001100110011001 H
+b1001100110011001 (
+b100 *
+b100 9
+#15000
+b0 H
+b0 (
+b101 *
+b101 9
+#16000
+b110 *
+b110 9
+#17000
+b111 *
+b111 9
+#18000
