@@ -1,0 +1,120 @@
+$date
+	Sun Apr  1 18:51:09 2018
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	10ps
+$end
+$scope module tb_dataMemory $end
+$var wire 16 ! PC_OUT [15:0] $end
+$var reg 1 " C_PCWrite $end
+$var reg 16 # PC_IN [15:0] $end
+$var reg 1 $ clk $end
+$scope module uut $end
+$var wire 1 % C_PCWrite $end
+$var wire 16 & PC_IN [15:0] $end
+$var wire 1 ' clk $end
+$var reg 16 ( PC_OUT [15:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx (
+1'
+b1111 &
+1%
+1$
+b1111 #
+1"
+bx !
+$end
+#1000
+0$
+0'
+#2000
+b1111 (
+b1111 !
+1$
+1'
+#3000
+0$
+0'
+#4000
+1$
+1'
+#5000
+0$
+0'
+b10100 #
+b10100 &
+#6000
+b10100 (
+b10100 !
+1$
+1'
+#7000
+0$
+0'
+#8000
+1$
+1'
+#9000
+0$
+0'
+#10000
+b1 (
+b1 !
+1$
+1'
+b1 #
+b1 &
+#11000
+0$
+0'
+#12000
+1$
+1'
+#13000
+0$
+0'
+#14000
+1$
+1'
+#15000
+0$
+0'
+0"
+0%
+#16000
+1$
+1'
+#17000
+0$
+0'
+#18000
+1$
+1'
+#19000
+0$
+0'
+#20000
+1$
+1'
+b0 #
+b0 &
+#21000
+0$
+0'
+#22000
+1$
+1'
+#23000
+0$
+0'
+#24000
+1$
+1'
+#25000

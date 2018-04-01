@@ -1,24 +1,87 @@
 #! /usr/bin/vvp
 :ivl_version "0.9.7 " "(v0_9_7)";
-:vpi_time_precision + 0;
+:vpi_time_precision - 11;
 :vpi_module "system";
 :vpi_module "v2005_math";
 :vpi_module "va_math";
-S_0x172d730 .scope module, "programCounter" "programCounter" 2 1;
- .timescale 0 0;
-v0x172d820_0 .net "C_PCWrite", 0 0, C4<z>; 0 drivers
-v0x176ec70_0 .net "PC_IN", 15 0, C4<zzzzzzzzzzzzzzzz>; 0 drivers
-v0x176ed10_0 .var "PC_OUT", 15 0;
-v0x176edb0_0 .net "clk", 0 0, C4<z>; 0 drivers
-E_0x172e380 .event posedge, v0x176edb0_0;
-    .scope S_0x172d730;
+S_0x2786930 .scope module, "tb_dataMemory" "tb_dataMemory" 2 2;
+ .timescale -9 -11;
+v0x2796660_0 .var "C_PCWrite", 0 0;
+v0x2796730_0 .var "PC_IN", 15 0;
+v0x27967e0_0 .net "PC_OUT", 15 0, v0x2796510_0; 1 drivers
+v0x2796890_0 .var "clk", 0 0;
+S_0x2786a20 .scope module, "uut" "programCounter" 2 8, 2 37, S_0x2786930;
+ .timescale -9 -11;
+v0x274f690_0 .net "C_PCWrite", 0 0, v0x2796660_0; 1 drivers
+v0x2796470_0 .net "PC_IN", 15 0, v0x2796730_0; 1 drivers
+v0x2796510_0 .var "PC_OUT", 15 0;
+v0x27965b0_0 .net "clk", 0 0, v0x2796890_0; 1 drivers
+E_0x2761920 .event posedge, v0x27965b0_0;
+    .scope S_0x2786a20;
 T_0 ;
-    %wait E_0x172e380;
-    %load/v 8, v0x176ec70_0, 16;
+    %wait E_0x2761920;
+    %load/v 8, v0x274f690_0, 1;
+    %jmp/0xz  T_0.0, 8;
+    %load/v 8, v0x2796470_0, 16;
     %ix/load 0, 16, 0;
-    %assign/v0 v0x176ed10_0, 0, 8;
+    %assign/v0 v0x2796510_0, 0, 8;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/v 8, v0x2796510_0, 16;
+    %ix/load 0, 16, 0;
+    %assign/v0 v0x2796510_0, 0, 8;
+T_0.1 ;
     %jmp T_0;
     .thread T_0;
+    .scope S_0x2786930;
+T_1 ;
+    %delay 0, 0;
+    %set/v v0x2796890_0, 1, 1;
+T_1.0 ;
+    %delay 1000, 0;
+    %load/v 8, v0x2796890_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x2796890_0, 0, 8;
+    %jmp T_1.0;
+    %end;
+    .thread T_1;
+    .scope S_0x2786930;
+T_2 ;
+    %delay 0, 0;
+    %set/v v0x2796660_0, 1, 1;
+    %movi 8, 15, 16;
+    %ix/load 0, 16, 0;
+    %assign/v0 v0x2796730_0, 0, 8;
+    %delay 5000, 0;
+    %movi 8, 20, 16;
+    %ix/load 0, 16, 0;
+    %assign/v0 v0x2796730_0, 0, 8;
+    %delay 5000, 0;
+    %movi 8, 1, 16;
+    %ix/load 0, 16, 0;
+    %assign/v0 v0x2796730_0, 0, 8;
+    %delay 5000, 0;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x2796660_0, 0, 0;
+    %delay 5000, 0;
+    %ix/load 0, 16, 0;
+    %assign/v0 v0x2796730_0, 0, 0;
+    %delay 5000, 0;
+    %vpi_call 2 23 "$stop";
+    %end;
+    .thread T_2;
+    .scope S_0x2786930;
+T_3 ;
+    %vpi_call 2 28 "$dumpfile", "programCounter.vcd";
+    %vpi_call 2 29 "$dumpvars";
+    %end;
+    .thread T_3;
+    .scope S_0x2786930;
+T_4 ;
+    %vpi_call 2 32 "$monitor", "time=%3d, PC_OUT=%16h, PC_IN=%16h, C_PCWrite=%b", $time, v0x27967e0_0, v0x2796730_0, v0x2796660_0;
+    %end;
+    .thread T_4;
 # The file index is used to find the file name in the following table.
 :file_names 3;
     "N/A";
