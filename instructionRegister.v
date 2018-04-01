@@ -92,7 +92,7 @@ module instructionRegister(		OPCODE, FUNCFIELD,
 	input wire C_IRWrite;
 	input wire rst;
 
-	always@(rst)
+	always@(*)
 	begin
 		if (rst == 1) begin
 			OPCODE <= 4'b0000;
