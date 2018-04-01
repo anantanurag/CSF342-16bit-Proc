@@ -19,56 +19,56 @@ module tb_instructionRegister();
 								clk, rst
 								);
 
-initial
-begin
-	#00 clk <= 1'b0;
-	#10 clk <= ~clk;
-end
+	initial
+	begin
+	#00 clk = 1'b0;
+	forever #10 clk = ~clk;
+	end
 
 	initial
 		begin
-		#20  D_MemData = 16'b1000_1011_0100_1000; C_IRWrite = 1'b1; rst = 0; //add
-/*		#20  D_MemData = 16'b1001_1011_11001001; C_IRWrite = 1'b1; rst = 0; //addimex
-		#20  D_MemData = 16'b1010_1011_11001001; C_IRWrite = 1'b1; rst = 0; //addimz
-		#20  D_MemData = 16'b1100_1011_0100_1000; C_IRWrite = 1'b1; rst = 0; //sub
-		#20  D_MemData = 16'b1101_1011_11001001; C_IRWrite = 1'b1; rst = 0; //subimex
-		#20  D_MemData = 16'b1110_1011_11001001; C_IRWrite = 1'b1; rst = 0; //subimz
-		#20  D_MemData = 16'b0000_1011_0100_0001; C_IRWrite = 1'b1; rst = 0; //shl
-		#20  D_MemData = 16'b0000_1011_0100_0010; C_IRWrite = 1'b1; rst = 0; //shr
-		#20  D_MemData = 16'b0000_1011_0100_0011; C_IRWrite = 1'b1; rst = 0; //sar
-		#20  D_MemData = 16'b1011_1011_0100_1000; C_IRWrite = 1'b1; rst = 0; //lnandr
-		#20  D_MemData = 16'b1111_1011_0100_1000; C_IRWrite = 1'b1; rst = 0; //lorr
-		#20  D_MemData = 16'b0111_1011_11001001; C_IRWrite = 1'b1; rst = 0; //lnandim
-		#20  D_MemData = 16'b0110_1011_11001001; C_IRWrite = 1'b1; rst = 0; //lorim
-		#20  D_MemData = 16'b0100_1011_0100_1000; C_IRWrite = 1'b1; rst = 0; //be
-		#20  D_MemData = 16'b0101_1011_0100_1000; C_IRWrite = 1'b1; rst = 0; //bne
-		#20  D_MemData = 16'b0011_101101111000; C_IRWrite = 1'b1; rst = 0; //jmp
-		#20  D_MemData = 16'b0001_1011_11001001; C_IRWrite = 1'b1; rst = 0; //lw
-		#20  D_MemData = 16'b0010_1011_11001001; C_IRWrite = 1'b1; rst = 0; //sw
+		#0 rst = 1;
+		#17  D_MemData = 16'b1000_1011_0100_1000; C_IRWrite = 1'b1; rst = 0; //add
+/*		#17  D_MemData = 16'b1001_1011_11001001; C_IRWrite = 1'b1; rst = 0; //addimex
+		#17  D_MemData = 16'b1010_1011_11001001; C_IRWrite = 1'b1; rst = 0; //addimz
+		#17  D_MemData = 16'b1100_1011_0100_1000; C_IRWrite = 1'b1; rst = 0; //sub
+		#17  D_MemData = 16'b1101_1011_11001001; C_IRWrite = 1'b1; rst = 0; //subimex
+		#17  D_MemData = 16'b1110_1011_11001001; C_IRWrite = 1'b1; rst = 0; //subimz
+		#17  D_MemData = 16'b0000_1011_0100_0001; C_IRWrite = 1'b1; rst = 0; //shl
+		#17  D_MemData = 16'b0000_1011_0100_0010; C_IRWrite = 1'b1; rst = 0; //shr
+		#17  D_MemData = 16'b0000_1011_0100_0011; C_IRWrite = 1'b1; rst = 0; //sar
+		#17  D_MemData = 16'b1011_1011_0100_1000; C_IRWrite = 1'b1; rst = 0; //lnandr
+		#17  D_MemData = 16'b1111_1011_0100_1000; C_IRWrite = 1'b1; rst = 0; //lorr
+		#17  D_MemData = 16'b0111_1011_11001001; C_IRWrite = 1'b1; rst = 0; //lnandim
+		#17  D_MemData = 16'b0110_1011_11001001; C_IRWrite = 1'b1; rst = 0; //lorim
+		#17  D_MemData = 16'b0100_1011_0100_1000; C_IRWrite = 1'b1; rst = 0; //be
+		#17  D_MemData = 16'b0101_1011_0100_1000; C_IRWrite = 1'b1; rst = 0; //bne
+		#17  D_MemData = 16'b0011_101101111000; C_IRWrite = 1'b1; rst = 0; //jmp
+		#17  D_MemData = 16'b0001_1011_11001001; C_IRWrite = 1'b1; rst = 0; //lw
+		#17  D_MemData = 16'b0010_1011_11001001; C_IRWrite = 1'b1; rst = 0; //sw
+*/		#17  C_IRWrite = 1'b0; rst = 0;
+		#17  C_IRWrite = 1'b0; rst = 1;
+		#17  C_IRWrite = 1'b1; rst = 1;
+/*		#17  D_MemData = 16'b1000_1011_0100_1000; C_IRWrite = 1'b1; rst = 0; //add
+		#17  D_MemData = 16'b1001_1011_11001001; C_IRWrite = 1'b1; rst = 0; //addimex
+		#17  D_MemData = 16'b1010_1011_11001001; C_IRWrite = 1'b1; rst = 0; //addimz
+		#17  D_MemData = 16'b1100_1011_0100_1000; C_IRWrite = 1'b1; rst = 0; //sub
+		#17  D_MemData = 16'b1101_1011_11001001; C_IRWrite = 1'b1; rst = 0; //subimex
+		#17  D_MemData = 16'b1110_1011_11001001; C_IRWrite = 1'b1; rst = 0; //subimz
+		#17  D_MemData = 16'b0000_1011_0100_0001; C_IRWrite = 1'b1; rst = 0; //shl
+		#17  D_MemData = 16'b0000_1011_0100_0010; C_IRWrite = 1'b1; rst = 0; //shr
+		#17  D_MemData = 16'b0000_1011_0100_0011; C_IRWrite = 1'b1; rst = 0; //sar
+		#17  D_MemData = 16'b1011_1011_0100_1000; C_IRWrite = 1'b1; rst = 0; //lnandr
+		#17  D_MemData = 16'b1111_1011_0100_1000; C_IRWrite = 1'b1; rst = 0; //lorr
+		#17  D_MemData = 16'b0111_1011_11001001; C_IRWrite = 1'b1; rst = 0; //lnandim
+		#17  D_MemData = 16'b0110_1011_11001001; C_IRWrite = 1'b1; rst = 0; //lorim
+		#17  D_MemData = 16'b0100_1011_0100_1000; C_IRWrite = 1'b1; rst = 0; //be
+		#17  D_MemData = 16'b0101_1011_0100_1000; C_IRWrite = 1'b1; rst = 0; //bne
+		#17  D_MemData = 16'b0011_101101111000; C_IRWrite = 1'b1; rst = 0; //jmp
+		#17  D_MemData = 16'b0001_1011_11001001; C_IRWrite = 1'b1; rst = 0; //lw
 */
-		#20  C_IRWrite = 1'b0; rst = 0;
-		#20  C_IRWrite = 1'b0; rst = 1;
-		#20  C_IRWrite = 1'b1; rst = 1;
-/*		#20  D_MemData = 16'b1000_1011_0100_1000; C_IRWrite = 1'b1; rst = 0; //add
-		#20  D_MemData = 16'b1001_1011_11001001; C_IRWrite = 1'b1; rst = 0; //addimex
-		#20  D_MemData = 16'b1010_1011_11001001; C_IRWrite = 1'b1; rst = 0; //addimz
-		#20  D_MemData = 16'b1100_1011_0100_1000; C_IRWrite = 1'b1; rst = 0; //sub
-		#20  D_MemData = 16'b1101_1011_11001001; C_IRWrite = 1'b1; rst = 0; //subimex
-		#20  D_MemData = 16'b1110_1011_11001001; C_IRWrite = 1'b1; rst = 0; //subimz
-		#20  D_MemData = 16'b0000_1011_0100_0001; C_IRWrite = 1'b1; rst = 0; //shl
-		#20  D_MemData = 16'b0000_1011_0100_0010; C_IRWrite = 1'b1; rst = 0; //shr
-		#20  D_MemData = 16'b0000_1011_0100_0011; C_IRWrite = 1'b1; rst = 0; //sar
-		#20  D_MemData = 16'b1011_1011_0100_1000; C_IRWrite = 1'b1; rst = 0; //lnandr
-		#20  D_MemData = 16'b1111_1011_0100_1000; C_IRWrite = 1'b1; rst = 0; //lorr
-		#20  D_MemData = 16'b0111_1011_11001001; C_IRWrite = 1'b1; rst = 0; //lnandim
-		#20  D_MemData = 16'b0110_1011_11001001; C_IRWrite = 1'b1; rst = 0; //lorim
-		#20  D_MemData = 16'b0100_1011_0100_1000; C_IRWrite = 1'b1; rst = 0; //be
-		#20  D_MemData = 16'b0101_1011_0100_1000; C_IRWrite = 1'b1; rst = 0; //bne
-		#20  D_MemData = 16'b0011_101101111000; C_IRWrite = 1'b1; rst = 0; //jmp
-		#20  D_MemData = 16'b0001_1011_11001001; C_IRWrite = 1'b1; rst = 0; //lw
-*/
-		#20  D_MemData = 16'b0010_1011_11001001; C_IRWrite = 1'b1; rst = 0; //sw
-		#20  $stop;
+		#17  D_MemData = 16'b0010_1011_11001001; C_IRWrite = 1'b1; rst = 0; //sw
+		#17  $stop;
 		end
 
 	initial
@@ -98,9 +98,10 @@ module instructionRegister(		OPCODE, FUNCFIELD,
 	input wire C_IRWrite;
 	input wire clk, rst;
 
-	always@(posedge clk or rst)
+	always@(posedge clk)
 	begin
-		if (rst == 1) begin
+		if (rst == 1) 
+		begin
 			OPCODE <= 4'b0000;
 			FUNCFIELD <= 4'b0000;
 			A_ReadReg1RT <= 4'b0000;
@@ -110,7 +111,8 @@ module instructionRegister(		OPCODE, FUNCFIELD,
 			A_WriteRegRT_BT <= 4'b0000;
 		end
 		else begin
-			if (C_IRWrite == 1) begin
+			if (C_IRWrite == 1) 
+			begin
 				OPCODE <= D_MemData[15:12];
 				FUNCFIELD <= D_MemData[3:0];
 				A_ReadReg1RT <= D_MemData[7:4];
@@ -119,15 +121,15 @@ module instructionRegister(		OPCODE, FUNCFIELD,
 				A_RegSWLW <= D_MemData[11:10];
 				A_WriteRegRT_BT <= D_MemData[11:8];
 			end
-			// else begin
-			// 	OPCODE = OPCODE;
-			// 	FUNCFIELD = FUNCFIELD;
-			// 	A_ReadReg1RT = A_ReadReg1RT;
-			// 	A_ReadReg2RT = A_ReadReg2RT;
-			// 	A_Offset = A_Offset;
-			// 	A_RegSWLW = A_RegSWLW;
-			// 	A_WriteRegRT_BT = A_WriteRegRT_BT;
-			// end
+			else begin
+			 	OPCODE = OPCODE;
+			 	FUNCFIELD = FUNCFIELD;
+			 	A_ReadReg1RT = A_ReadReg1RT;
+			 	A_ReadReg2RT = A_ReadReg2RT;
+			 	A_Offset = A_Offset;
+			 	A_RegSWLW = A_RegSWLW;
+			 	A_WriteRegRT_BT = A_WriteRegRT_BT;
+			end
 		end
 	end
 
