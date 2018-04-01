@@ -1,5 +1,7 @@
-all: programCounter MemoryDataRegister dataMemory instructionMemory alu control regfile muxprealu instructionRegister
+all: TOP programCounter MemoryDataRegister dataMemory instructionMemory alu control regfile muxprealu instructionRegister
 	# 
+TOP: TOP.v
+	iverilog -o TOP.vvp TOP.v
 programCounter: programCounter.v
 	iverilog -o programCounter.vvp programCounter.v
 MemoryDataRegister: MemoryDataRegister.v

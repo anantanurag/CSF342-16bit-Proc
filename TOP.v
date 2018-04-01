@@ -31,8 +31,4 @@ alu ALU_MAIN();
 MUXpreALU MPA();
 
 
-
-
-
-
 endmodule
