@@ -1,0 +1,137 @@
+$date
+	Sun Apr  1 18:15:28 2018
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	10ps
+$end
+$scope module tb_instructionMemory $end
+$var wire 16 ! D_Instruction [15:0] $end
+$var reg 16 " A_InstrAddress [15:0] $end
+$var reg 1 # C_IMRead $end
+$var reg 1 $ clk $end
+$var reg 1 % rst $end
+$scope module uut $end
+$var wire 16 & A_InstrAddress [15:0] $end
+$var wire 1 ' C_IMRead $end
+$var wire 1 ( clk $end
+$var wire 1 ) rst $end
+$var reg 16 * D_Instruction [15:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 *
+1)
+0(
+1'
+b0 &
+1%
+0$
+1#
+b0 "
+b0 !
+$end
+#1000
+1$
+1(
+#2000
+0$
+0(
+#3000
+1$
+1(
+b1001000110100 *
+b1001000110100 !
+0%
+0)
+#4000
+0$
+0(
+#5000
+1$
+1(
+#6000
+0$
+0(
+#7000
+1$
+1(
+#8000
+0$
+0(
+#9000
+1$
+1(
+#10000
+0$
+0(
+b1 "
+b1 &
+#11000
+b100010101100111 *
+b100010101100111 !
+1$
+1(
+#12000
+0$
+0(
+#13000
+1$
+1(
+#14000
+0$
+0(
+#15000
+1$
+1(
+#16000
+0$
+0(
+#17000
+1$
+1(
+#18000
+0$
+0(
+#19000
+1$
+1(
+#20000
+0$
+0(
+b10 "
+b10 &
+#21000
+b111100010010111 *
+b111100010010111 !
+1$
+1(
+#22000
+0$
+0(
+#23000
+1$
+1(
+#24000
+0$
+0(
+#25000
+1$
+1(
+#26000
+0$
+0(
+#27000
+1$
+1(
+#28000
+0$
+0(
+#29000
+1$
+1(
+#30000
