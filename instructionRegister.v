@@ -8,7 +8,7 @@ module tb_instructionRegister();
 
 	reg [15:0] D_MemData;
 	reg C_IRWrite;
-	reg rst;
+	reg clk, rst;
 
 	instructionRegister uut(	OPCODE, FUNCFIELD,
 								A_ReadReg1RT, A_ReadReg2RT,
@@ -16,8 +16,14 @@ module tb_instructionRegister();
 								A_WriteRegRT_BT,
 								D_MemData,
 								C_IRWrite,
-								rst
+								clk, rst
 								);
+
+initial
+begin
+	#00 clk <= 1'b0;
+	#10 clk <= ~clk;
+end
 
 	initial
 		begin
@@ -79,7 +85,7 @@ module instructionRegister(		OPCODE, FUNCFIELD,
 								A_WriteRegRT_BT,
 								D_MemData,
 								C_IRWrite,
-								rst
+								clk, rst
 								);
 
 
@@ -90,9 +96,9 @@ module instructionRegister(		OPCODE, FUNCFIELD,
 
 	input wire [15:0] D_MemData;
 	input wire C_IRWrite;
-	input wire rst;
+	input wire clk, rst;
 
-	always@(*)
+	always@(posedge clk or rst)
 	begin
 		if (rst == 1) begin
 			OPCODE <= 4'b0000;

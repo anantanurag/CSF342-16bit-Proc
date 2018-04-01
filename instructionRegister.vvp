@@ -4,156 +4,172 @@
 :vpi_module "system";
 :vpi_module "v2005_math";
 :vpi_module "va_math";
-S_0x11b7980 .scope module, "tb_instructionRegister" "tb_instructionRegister" 2 2;
+S_0x228c900 .scope module, "tb_instructionRegister" "tb_instructionRegister" 2 2;
  .timescale 0 0;
-v0x11ee360_0 .net "A_Offset", 1 0, v0x11a2180_0; 1 drivers
-v0x11ee400_0 .net "A_ReadReg1RT", 3 0, v0x11edcc0_0; 1 drivers
-v0x11ee4b0_0 .net "A_ReadReg2RT", 3 0, v0x11edd60_0; 1 drivers
-v0x11ee560_0 .net "A_RegSWLW", 1 0, v0x11ede00_0; 1 drivers
-v0x11ee640_0 .net "A_WriteRegRT_BT", 3 0, v0x11edeb0_0; 1 drivers
-v0x11ee6f0_0 .var "C_IRWrite", 0 0;
-v0x11ee770_0 .var "D_MemData", 15 0;
-v0x11ee820_0 .net "FUNCFIELD", 3 0, v0x11ee0d0_0; 1 drivers
-v0x11ee8d0_0 .net "OPCODE", 3 0, v0x11ee1c0_0; 1 drivers
-v0x11ee980_0 .var "rst", 0 0;
-S_0x11da090 .scope module, "uut" "instructionRegister" 2 13, 2 76, S_0x11b7980;
+v0x22a1580_0 .net "A_Offset", 1 0, v0x2254180_0; 1 drivers
+v0x22a1620_0 .net "A_ReadReg1RT", 3 0, v0x22a0e40_0; 1 drivers
+v0x22a16d0_0 .net "A_ReadReg2RT", 3 0, v0x22a0ee0_0; 1 drivers
+v0x22a1780_0 .net "A_RegSWLW", 1 0, v0x22a0f80_0; 1 drivers
+v0x22a1860_0 .net "A_WriteRegRT_BT", 3 0, v0x22a1030_0; 1 drivers
+v0x22a1910_0 .var "C_IRWrite", 0 0;
+v0x22a1990_0 .var "D_MemData", 15 0;
+v0x22a1a40_0 .net "FUNCFIELD", 3 0, v0x22a1250_0; 1 drivers
+v0x22a1af0_0 .net "OPCODE", 3 0, v0x22a1340_0; 1 drivers
+v0x22a1ba0_0 .var "clk", 0 0;
+v0x22a1cb0_0 .var "rst", 0 0;
+S_0x228c9f0 .scope module, "uut" "instructionRegister" 2 13, 2 82, S_0x228c900;
  .timescale 0 0;
-v0x11a2180_0 .var "A_Offset", 1 0;
-v0x11edcc0_0 .var "A_ReadReg1RT", 3 0;
-v0x11edd60_0 .var "A_ReadReg2RT", 3 0;
-v0x11ede00_0 .var "A_RegSWLW", 1 0;
-v0x11edeb0_0 .var "A_WriteRegRT_BT", 3 0;
-v0x11edf50_0 .net "C_IRWrite", 0 0, v0x11ee6f0_0; 1 drivers
-v0x11ee030_0 .net "D_MemData", 15 0, v0x11ee770_0; 1 drivers
-v0x11ee0d0_0 .var "FUNCFIELD", 3 0;
-v0x11ee1c0_0 .var "OPCODE", 3 0;
-v0x11ee260_0 .net "rst", 0 0, v0x11ee980_0; 1 drivers
-E_0x11dd6c0 .event edge, v0x11ee260_0, v0x11edf50_0, v0x11ee030_0;
-    .scope S_0x11da090;
+v0x2254180_0 .var "A_Offset", 1 0;
+v0x22a0e40_0 .var "A_ReadReg1RT", 3 0;
+v0x22a0ee0_0 .var "A_ReadReg2RT", 3 0;
+v0x22a0f80_0 .var "A_RegSWLW", 1 0;
+v0x22a1030_0 .var "A_WriteRegRT_BT", 3 0;
+v0x22a10d0_0 .net "C_IRWrite", 0 0, v0x22a1910_0; 1 drivers
+v0x22a11b0_0 .net "D_MemData", 15 0, v0x22a1990_0; 1 drivers
+v0x22a1250_0 .var "FUNCFIELD", 3 0;
+v0x22a1340_0 .var "OPCODE", 3 0;
+v0x22a13e0_0 .net "clk", 0 0, v0x22a1ba0_0; 1 drivers
+v0x22a14e0_0 .net "rst", 0 0, v0x22a1cb0_0; 1 drivers
+E_0x22902b0/0 .event edge, v0x22a14e0_0;
+E_0x22902b0/1 .event posedge, v0x22a13e0_0;
+E_0x22902b0 .event/or E_0x22902b0/0, E_0x22902b0/1;
+    .scope S_0x228c9f0;
 T_0 ;
-    %wait E_0x11dd6c0;
-    %load/v 8, v0x11ee260_0, 1;
+    %wait E_0x22902b0;
+    %load/v 8, v0x22a14e0_0, 1;
     %mov 9, 0, 2;
     %cmpi/u 8, 1, 3;
     %jmp/0xz  T_0.0, 4;
     %ix/load 0, 4, 0;
-    %assign/v0 v0x11ee1c0_0, 0, 0;
+    %assign/v0 v0x22a1340_0, 0, 0;
     %ix/load 0, 4, 0;
-    %assign/v0 v0x11ee0d0_0, 0, 0;
+    %assign/v0 v0x22a1250_0, 0, 0;
     %ix/load 0, 4, 0;
-    %assign/v0 v0x11edcc0_0, 0, 0;
+    %assign/v0 v0x22a0e40_0, 0, 0;
     %ix/load 0, 4, 0;
-    %assign/v0 v0x11edd60_0, 0, 0;
+    %assign/v0 v0x22a0ee0_0, 0, 0;
     %ix/load 0, 2, 0;
-    %assign/v0 v0x11a2180_0, 0, 0;
+    %assign/v0 v0x2254180_0, 0, 0;
     %ix/load 0, 2, 0;
-    %assign/v0 v0x11ede00_0, 0, 0;
+    %assign/v0 v0x22a0f80_0, 0, 0;
     %ix/load 0, 4, 0;
-    %assign/v0 v0x11edeb0_0, 0, 0;
+    %assign/v0 v0x22a1030_0, 0, 0;
     %jmp T_0.1;
 T_0.0 ;
-    %load/v 8, v0x11edf50_0, 1;
+    %load/v 8, v0x22a10d0_0, 1;
     %mov 9, 0, 2;
     %cmpi/u 8, 1, 3;
     %jmp/0xz  T_0.2, 4;
     %ix/load 1, 12, 0;
     %mov 4, 0, 1;
     %jmp/1 T_0.4, 4;
-    %load/x1p 8, v0x11ee030_0, 4;
+    %load/x1p 8, v0x22a11b0_0, 4;
     %jmp T_0.5;
 T_0.4 ;
     %mov 8, 2, 4;
 T_0.5 ;
 ; Save base=8 wid=4 in lookaside.
     %ix/load 0, 4, 0;
-    %assign/v0 v0x11ee1c0_0, 0, 8;
-    %load/v 8, v0x11ee030_0, 4; Only need 4 of 16 bits
+    %assign/v0 v0x22a1340_0, 0, 8;
+    %load/v 8, v0x22a11b0_0, 4; Only need 4 of 16 bits
 ; Save base=8 wid=4 in lookaside.
     %ix/load 0, 4, 0;
-    %assign/v0 v0x11ee0d0_0, 0, 8;
+    %assign/v0 v0x22a1250_0, 0, 8;
     %ix/load 1, 4, 0;
     %mov 4, 0, 1;
     %jmp/1 T_0.6, 4;
-    %load/x1p 8, v0x11ee030_0, 4;
+    %load/x1p 8, v0x22a11b0_0, 4;
     %jmp T_0.7;
 T_0.6 ;
     %mov 8, 2, 4;
 T_0.7 ;
 ; Save base=8 wid=4 in lookaside.
     %ix/load 0, 4, 0;
-    %assign/v0 v0x11edcc0_0, 0, 8;
-    %load/v 8, v0x11ee030_0, 4; Only need 4 of 16 bits
+    %assign/v0 v0x22a0e40_0, 0, 8;
+    %load/v 8, v0x22a11b0_0, 4; Only need 4 of 16 bits
 ; Save base=8 wid=4 in lookaside.
     %ix/load 0, 4, 0;
-    %assign/v0 v0x11edd60_0, 0, 8;
+    %assign/v0 v0x22a0ee0_0, 0, 8;
     %ix/load 1, 8, 0;
     %mov 4, 0, 1;
     %jmp/1 T_0.8, 4;
-    %load/x1p 8, v0x11ee030_0, 2;
+    %load/x1p 8, v0x22a11b0_0, 2;
     %jmp T_0.9;
 T_0.8 ;
     %mov 8, 2, 2;
 T_0.9 ;
 ; Save base=8 wid=2 in lookaside.
     %ix/load 0, 2, 0;
-    %assign/v0 v0x11a2180_0, 0, 8;
+    %assign/v0 v0x2254180_0, 0, 8;
     %ix/load 1, 10, 0;
     %mov 4, 0, 1;
     %jmp/1 T_0.10, 4;
-    %load/x1p 8, v0x11ee030_0, 2;
+    %load/x1p 8, v0x22a11b0_0, 2;
     %jmp T_0.11;
 T_0.10 ;
     %mov 8, 2, 2;
 T_0.11 ;
 ; Save base=8 wid=2 in lookaside.
     %ix/load 0, 2, 0;
-    %assign/v0 v0x11ede00_0, 0, 8;
+    %assign/v0 v0x22a0f80_0, 0, 8;
     %ix/load 1, 8, 0;
     %mov 4, 0, 1;
     %jmp/1 T_0.12, 4;
-    %load/x1p 8, v0x11ee030_0, 4;
+    %load/x1p 8, v0x22a11b0_0, 4;
     %jmp T_0.13;
 T_0.12 ;
     %mov 8, 2, 4;
 T_0.13 ;
 ; Save base=8 wid=4 in lookaside.
     %ix/load 0, 4, 0;
-    %assign/v0 v0x11edeb0_0, 0, 8;
+    %assign/v0 v0x22a1030_0, 0, 8;
 T_0.2 ;
 T_0.1 ;
     %jmp T_0;
-    .thread T_0, $push;
-    .scope S_0x11b7980;
+    .thread T_0;
+    .scope S_0x228c900;
 T_1 ;
-    %delay 20, 0;
-    %movi 8, 35656, 16;
-    %set/v v0x11ee770_0, 8, 16;
-    %set/v v0x11ee6f0_0, 1, 1;
-    %set/v v0x11ee980_0, 0, 1;
-    %delay 20, 0;
-    %set/v v0x11ee6f0_0, 0, 1;
-    %set/v v0x11ee980_0, 0, 1;
-    %delay 20, 0;
-    %set/v v0x11ee6f0_0, 0, 1;
-    %set/v v0x11ee980_0, 1, 1;
-    %delay 20, 0;
-    %set/v v0x11ee6f0_0, 1, 1;
-    %set/v v0x11ee980_0, 1, 1;
-    %delay 20, 0;
-    %movi 8, 11209, 16;
-    %set/v v0x11ee770_0, 8, 16;
-    %set/v v0x11ee6f0_0, 1, 1;
-    %set/v v0x11ee980_0, 0, 1;
-    %delay 20, 0;
-    %vpi_call 2 65 "$stop";
+    %delay 0, 0;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x22a1ba0_0, 0, 0;
+    %delay 10, 0;
+    %load/v 8, v0x22a1ba0_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x22a1ba0_0, 0, 8;
     %end;
     .thread T_1;
-    .scope S_0x11b7980;
+    .scope S_0x228c900;
 T_2 ;
-    %vpi_call 2 70 "$dumpfile", "instructionRegister.vcd";
-    %vpi_call 2 71 "$dumpvars";
+    %delay 20, 0;
+    %movi 8, 35656, 16;
+    %set/v v0x22a1990_0, 8, 16;
+    %set/v v0x22a1910_0, 1, 1;
+    %set/v v0x22a1cb0_0, 0, 1;
+    %delay 20, 0;
+    %set/v v0x22a1910_0, 0, 1;
+    %set/v v0x22a1cb0_0, 0, 1;
+    %delay 20, 0;
+    %set/v v0x22a1910_0, 0, 1;
+    %set/v v0x22a1cb0_0, 1, 1;
+    %delay 20, 0;
+    %set/v v0x22a1910_0, 1, 1;
+    %set/v v0x22a1cb0_0, 1, 1;
+    %delay 20, 0;
+    %movi 8, 11209, 16;
+    %set/v v0x22a1990_0, 8, 16;
+    %set/v v0x22a1910_0, 1, 1;
+    %set/v v0x22a1cb0_0, 0, 1;
+    %delay 20, 0;
+    %vpi_call 2 71 "$stop";
     %end;
     .thread T_2;
+    .scope S_0x228c900;
+T_3 ;
+    %vpi_call 2 76 "$dumpfile", "instructionRegister.vcd";
+    %vpi_call 2 77 "$dumpvars";
+    %end;
+    .thread T_3;
 # The file index is used to find the file name in the following table.
 :file_names 3;
     "N/A";
