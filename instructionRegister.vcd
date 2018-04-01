@@ -1,0 +1,121 @@
+$date
+	Sun Apr  1 20:28:07 2018
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module tb_instructionRegister $end
+$var wire 2 ! A_Offset [1:0] $end
+$var wire 4 " A_ReadReg1RT [3:0] $end
+$var wire 4 # A_ReadReg2RT [3:0] $end
+$var wire 2 $ A_RegSWLW [1:0] $end
+$var wire 4 % A_WriteRegRT_BT [3:0] $end
+$var wire 4 & FUNCFIELD [3:0] $end
+$var wire 4 ' OPCODE [3:0] $end
+$var reg 1 ( C_IRWrite $end
+$var reg 16 ) D_MemData [15:0] $end
+$var reg 1 * rst $end
+$scope module uut $end
+$var wire 1 + C_IRWrite $end
+$var wire 16 , D_MemData [15:0] $end
+$var wire 1 - rst $end
+$var reg 2 . A_Offset [1:0] $end
+$var reg 4 / A_ReadReg1RT [3:0] $end
+$var reg 4 0 A_ReadReg2RT [3:0] $end
+$var reg 2 1 A_RegSWLW [1:0] $end
+$var reg 4 2 A_WriteRegRT_BT [3:0] $end
+$var reg 4 3 FUNCFIELD [3:0] $end
+$var reg 4 4 OPCODE [3:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx 4
+bx 3
+bx 2
+bx 1
+bx 0
+bx /
+bx .
+x-
+bx ,
+x+
+x*
+bx )
+x(
+bx '
+bx &
+bx %
+bx $
+bx #
+bx "
+bx !
+$end
+#20
+b1011 2
+b1011 %
+b10 1
+b10 $
+b11 .
+b11 !
+b1000 0
+b1000 #
+b100 /
+b100 "
+b1000 3
+b1000 &
+b1000 4
+b1000 '
+0*
+0-
+1(
+1+
+b1000101101001000 )
+b1000101101001000 ,
+#40
+0(
+0+
+#60
+b0 2
+b0 %
+b0 1
+b0 $
+b0 .
+b0 !
+b0 0
+b0 #
+b0 /
+b0 "
+b0 3
+b0 &
+b0 4
+b0 '
+1*
+1-
+#80
+1(
+1+
+#100
+b1011 2
+b1011 %
+b10 1
+b10 $
+b11 .
+b11 !
+b1001 0
+b1001 #
+b1100 /
+b1100 "
+b1001 3
+b1001 &
+b10 4
+b10 '
+0*
+0-
+b10101111001001 )
+b10101111001001 ,
+#120
