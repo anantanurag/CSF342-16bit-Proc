@@ -1,50 +1,12 @@
-`timescale 1ns/10ps
-
-module tb_memoryDataRegister();
+module memoryDataRegister(MDR_OUT, MDR_IN, clk);
 	
-	wire [15:0] D_OUT;
-
-	reg [15:0] D_IN;
-	reg clk;
-
-	memoryDataRegister uut(D_OUT, D_IN, clk);
-
-	initial
-	begin
-		#00 clk = 1'b0;
-		forever #10 clk = ~clk;
-	end
-
-	initial
-	begin
-		#27 D_IN = 16'd54;
-		#27 D_IN = 16'd977;
-		#27 D_IN = 16'd0;
-		#27 D_IN = 16'd6516;
-		#27 D_IN = 16'd515;
-		#27 D_IN = 16'd333;
-		#27 D_IN = 16'd1804;
-		
-		$stop;
-	end
-
-	initial
-	begin
-		$dumpfile("memoryDataRegister.vcd");
-		$dumpvars;
-	end
-
-endmodule
-
-module memoryDataRegister(D_OUT, D_IN, clk);
+	output reg [15:0] MDR_OUT;
 	
-	output reg [15:0] D_OUT;
-	
-	input wire [15:0] D_IN;
+	input wire [15:0] MDR_IN;
 	input wire clk;
 	
 	always@(posedge clk)
 	begin
-		D_OUT <= D_IN;
+		MDR_OUT <= MDR_IN;
 	end
 endmodule

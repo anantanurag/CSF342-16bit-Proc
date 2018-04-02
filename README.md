@@ -1,6 +1,12 @@
 # CSF342-16bit-Proc
 16 Bit RISC Processor
 
+2 April 2018
+Memory and Datapath are not clocked.
+
+Shift Datapath and Control missing!!! Dont panic. Atleast try not to :)
+
+
 31 March 2018
 
 **In cases where there is nothing to do when control signal has deasserted, i have done memory[i] = memory[i] to fill something in the else block after the if statement. This may be problematic**

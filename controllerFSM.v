@@ -1,76 +1,11 @@
-`timescale 1ns/10ps 
-module tb_controllerFSM();
-reg [3:0] opcode, func_field;
-reg clk, rst;
-
-wire [5:0] NextState, CurrentState;
-
-wire [1:0] PCSrc;
-wire [2:0] ALUOp;
-wire sign_extend;
-wire ALUSrcA;
-wire [2:0] ALUSrcB;
-wire [1:0] ReadR1;
-wire ReadR2;
-wire RegWriteDst;
-wire MemToReg;
-wire PCBEqCond, PCBNqCond;
-wire PCWrite;
-wire MemWrite, MemRead;
-wire IRWrite;
-wire RegWrite;
-wire WriteA, WriteB;
-
-controllerFSM uut (.NextState(NextState), .CurrentState(CurrentState), .PCSrc(PCSrc), .ALUOp(ALUOp), .sign_extend(sign_extend), 
-					.ALUSrcA(ALUSrcA) ,.ALUSrcB(ALUSrcB), .ReadR1(ReadR1), .ReadR2(ReadR2), 
-					.RegWriteDst(RegWriteDst), .MemToReg(MemToReg), .PCBEqCond(PCBEqCond), 
-					.PCBNqCond(PCBNqCond), .PCWrite(PCWrite), .MemWrite(MemWrite), 
-					.MemRead(MemRead), .IRWrite(IRWrite), .RegWrite(RegWrite), 
-					.WriteA(WriteA), .WriteB(WriteB), 
-					.opcode(opcode),.func_field(func_field),.clk(clk),.rst(rst)
-					);
-
-initial
-begin
-	$dumpfile("controllerFSM.vcd");
-	$dumpvars;
-end
-
-initial
-begin
-	#0000 clk <= 1'b0;
-	forever #5 clk <= ~clk;
-end
-
-initial
-begin
-	#0000 rst = 1'b1;
-	#0005 rst = 1'b0;
-end
-
-initial
-begin
-	#0010 opcode <= 1000;
-	#0100 $stop;
-end
-
-initial
-begin
-//$monitor("time=%4d, PCSrc=%2b, ALUOp=%3b, sign_extend=%1b,ALUSrcA=%1b ,ALUSrcB=%3b, ReadR1=%2b, ReadR2=%1b, RegWriteDst=%1b, MemToReg=%1b, PCBEqCond=%1b, PCBNqCond=%1b, PCWrite=%1b, MemWrite=%1b, MemRead=%1b, IRWrite=%1b, RegWrite=%1b, WriteA=%1b, WriteB=%1b, opcode=%4b,func_field=%4b, clk=%1b, rst=%1b",$time, PCSrc, ALUOp, sign_extend, ALUSrcA ,ALUSrcB, ReadR1, ReadR2, RegWriteDst, MemToReg, PCBEqCond, PCBNqCond, PCWrite, MemWrite, MemRead, IRWrite, RegWrite, WriteA, WriteB, opcode,func_field, clk, rst);
-$monitor("time=%4d, NextState=%6b, CurrentState=%6b, opcode=%4b, func_field=%4b, clk=%b, rst=%b", $time, NextState, CurrentState, opcode, func_field, clk, rst);
-end
-
-endmodule
-
-module controllerFSM(NextState, CurrentState, PCSrc, ALUOp, sign_extend, 
+module controllerFSM(PCSrc, ALUOp, sign_extend, 
 					ALUSrcA ,ALUSrcB, ReadR1, ReadR2, 
 					RegWriteDst, MemToReg, PCBEqCond, 
 					PCBNqCond, PCWrite, MemWrite, 
 					MemRead, IRWrite, RegWrite, 
-					WriteA, WriteB, 
 					opcode,func_field, clk, rst);
 
-output reg [5:0] NextState, CurrentState;
+reg [5:0] NextState, CurrentState;
 
 output reg [1:0] PCSrc;
 output reg [2:0] ALUOp;
@@ -86,7 +21,6 @@ output reg PCWrite;
 output reg MemWrite, MemRead;
 output reg IRWrite;
 output reg RegWrite;
-output reg WriteA, WriteB;
 
 input wire [3:0] opcode, func_field;
 input wire clk, rst;
@@ -236,8 +170,7 @@ I_FETCH		:begin
 				MemRead		<= 1'b0;
 				IRWrite		<= 1'b0;
 				RegWrite 	<= 1'b0;
-				WriteA 		<= 1'b0;
-				WriteB 		<= 1'b0;
+				
 			end
 I_DECODE	:begin
 				PCSrc		<= 2'bxx;
@@ -256,8 +189,7 @@ I_DECODE	:begin
 				MemRead		<= 1'b0;
 				IRWrite		<= 1'b0;
 				RegWrite 	<= 1'b0;
-				WriteA 		<= 1'b1;
-				WriteB 		<= 1'b1;
+				
 			end
 EX_ADD 		:begin
 				PCSrc		<= 2'bxx;
@@ -276,8 +208,7 @@ EX_ADD 		:begin
 				MemRead		<= 1'b0;
 				IRWrite		<= 1'b0;
 				RegWrite 	<= 1'b0;
-				WriteA 		<= 1'b1;
-				WriteB 		<= 1'b1;
+				
 			end
 EX_ADDI1	:begin
 				PCSrc		<= 2'bxx;
@@ -296,8 +227,7 @@ EX_ADDI1	:begin
 				MemRead		<= 1'b0;
 				IRWrite		<= 1'b0;
 				RegWrite 	<= 1'b0;
-				WriteA 		<= 1'b1;
-				WriteB 		<= 1'b1;
+				
 			end
 EX_ADDI2	:begin
 				PCSrc		<= 2'bxx;
@@ -316,8 +246,7 @@ EX_ADDI2	:begin
 				MemRead		<= 1'b0;
 				IRWrite		<= 1'b0;
 				RegWrite 	<= 1'b0;
-				WriteA 		<= 1'b1;
-				WriteB 		<= 1'b1;
+				
 			end
 EX_SUB 		:begin
 				PCSrc		<= 2'bxx;
@@ -336,8 +265,7 @@ EX_SUB 		:begin
 				MemRead		<= 1'b0;
 				IRWrite		<= 1'b0;
 				RegWrite 	<= 1'b0;
-				WriteA 		<= 1'b1;
-				WriteB 		<= 1'b1;
+				
 			end
 EX_SUBI1	:begin
 				PCSrc		<= 2'bxx;
@@ -356,8 +284,7 @@ EX_SUBI1	:begin
 				MemRead		<= 1'b0;
 				IRWrite		<= 1'b0;
 				RegWrite 	<= 1'b0;
-				WriteA 		<= 1'b1;
-				WriteB 		<= 1'b1;
+				
 			end
 EX_SUBI2	:begin
 				PCSrc		<= 2'bxx;
@@ -376,8 +303,7 @@ EX_SUBI2	:begin
 				MemRead		<= 1'b0;
 				IRWrite		<= 1'b0;
 				RegWrite 	<= 1'b0;
-				WriteA 		<= 1'b1;
-				WriteB 		<= 1'b1;
+				
 			end
 EX_SLL		:begin // NOT MADE YET
 				PCSrc		<= 2'bxx;
@@ -396,8 +322,7 @@ EX_SLL		:begin // NOT MADE YET
 				MemRead		<= 1'b0;
 				IRWrite		<= 1'b0;
 				RegWrite 	<= 1'b0;
-				WriteA 		<= 1'b1;
-				WriteB 		<= 1'b1;
+				
 			end
 EX_SRL		:begin // NOT MADE YET
 				PCSrc		<= 2'bxx;
@@ -416,8 +341,7 @@ EX_SRL		:begin // NOT MADE YET
 				MemRead		<= 1'b0;
 				IRWrite		<= 1'b0;
 				RegWrite 	<= 1'b0;
-				WriteA 		<= 1'b1;
-				WriteB 		<= 1'b1;
+				
 			end
 EX_SRA		:begin // NOT MADE YET
 				PCSrc		<= 2'bxx;
@@ -436,8 +360,7 @@ EX_SRA		:begin // NOT MADE YET
 				MemRead		<= 1'b0;
 				IRWrite		<= 1'b0;
 				RegWrite 	<= 1'b0;
-				WriteA 		<= 1'b1;
-				WriteB 		<= 1'b1;
+				
 			end
 EX_NAND		:begin
 				PCSrc		<= 2'bxx;
@@ -456,8 +379,7 @@ EX_NAND		:begin
 				MemRead		<= 1'b0;
 				IRWrite		<= 1'b0;
 				RegWrite 	<= 1'b0;
-				WriteA 		<= 1'b1;
-				WriteB 		<= 1'b1;
+				
 			end
 EX_NANDI	:begin
 				PCSrc		<= 2'bxx;
@@ -476,8 +398,7 @@ EX_NANDI	:begin
 				MemRead		<= 1'b0;
 				IRWrite		<= 1'b0;
 				RegWrite 	<= 1'b0;
-				WriteA 		<= 1'b1;
-				WriteB 		<= 1'b1;
+				
 			end
 EX_OR		:begin
 				PCSrc		<= 2'bxx;
@@ -496,8 +417,7 @@ EX_OR		:begin
 				MemRead		<= 1'b0;
 				IRWrite		<= 1'b0;
 				RegWrite 	<= 1'b0;
-				WriteA 		<= 1'b1;
-				WriteB 		<= 1'b1;
+				
 			end
 EX_ORI		:begin
 				PCSrc		<= 2'bxx;
@@ -516,8 +436,7 @@ EX_ORI		:begin
 				MemRead		<= 1'b0;
 				IRWrite		<= 1'b0;
 				RegWrite 	<= 1'b0;
-				WriteA 		<= 1'b1;
-				WriteB 		<= 1'b1;
+				
 			end
 EX_BEQ		:begin
 				PCSrc		<= 2'b00;
@@ -536,8 +455,7 @@ EX_BEQ		:begin
 				MemRead		<= 1'b0;
 				IRWrite		<= 1'b0;
 				RegWrite 	<= 1'b0;
-				WriteA 		<= 1'b0;
-				WriteB 		<= 1'b0;
+				
 			end
 EX_BNQ		:begin
 				PCSrc		<= 2'b00;
@@ -556,8 +474,7 @@ EX_BNQ		:begin
 				MemRead		<= 1'b0;
 				IRWrite		<= 1'b0;
 				RegWrite 	<= 1'b0;
-				WriteA 		<= 1'b0;
-				WriteB 		<= 1'b0;
+				
 			end
 EX_JMP		:begin
 				PCSrc		<= 2'b01;
@@ -576,8 +493,7 @@ EX_JMP		:begin
 				MemRead		<= 1'b0;
 				IRWrite		<= 1'b0;
 				RegWrite 	<= 1'b0;
-				WriteA 		<= 1'b0;
-				WriteB 		<= 1'b0;
+				
 			end
 EX_LW_SW	:begin
 				PCSrc		<= 2'bxx;
@@ -596,9 +512,7 @@ EX_LW_SW	:begin
 				MemRead		<= 1'b0;
 				IRWrite		<= 1'b0;
 				RegWrite 	<= 1'b0;
-				WriteA 		<= 1'b1;
-				WriteB 		<= 1'b1;
-			end
+				
 MEM_RTYPE	:begin
 				PCSrc		<= 2'bxx;
 				ALUOp		<= 3'bxxx;
@@ -616,8 +530,7 @@ MEM_RTYPE	:begin
 				MemRead		<= 1'b0;
 				IRWrite		<= 1'b0;
 				RegWrite 	<= 1'b0;
-				WriteA 		<= 1'b0;
-				WriteB 		<= 1'b0;
+				
 			end
 MEM_LW		:begin
 				PCSrc		<= 2'bxx;
@@ -636,8 +549,7 @@ MEM_LW		:begin
 				MemRead		<= 1'b1;
 				IRWrite		<= 1'b0;
 				RegWrite 	<= 1'b0;
-				WriteA 		<= 1'b0;
-				WriteB 		<= 1'b0;
+				
 			end
 MEM_SW		:begin
 				PCSrc		<= 2'bxx;
@@ -656,8 +568,7 @@ MEM_SW		:begin
 				MemRead		<= 1'b0;
 				IRWrite		<= 1'b0;
 				RegWrite 	<= 1'b0;
-				WriteA 		<= 1'b0;
-				WriteB 		<= 1'b0;
+				
 			end
 WRITEBACK	:begin
 				PCSrc		<= 2'bxx;
@@ -676,8 +587,7 @@ WRITEBACK	:begin
 				MemRead		<= 1'b0;
 				IRWrite		<= 1'b0;
 				RegWrite 	<= 1'b1;
-				WriteA 		<= 1'b0;
-				WriteB 		<= 1'b0;
+				
 			end
 endcase
 end
