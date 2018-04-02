@@ -93,3 +93,15 @@ module alu (	out,z,
 	end
 
 endmodule
+
+
+module ALUOut(ALUOUT_OUT, ALUOUT_IN, clk);
+output reg [15:0] PC_OUT;
+input wire [15:0] PC_IN;
+input wire clk;
+
+always@(posedge clk)
+begin
+ 	ALUOUT_OUT <= ALUOUT_IN;
+end
+endmodule
