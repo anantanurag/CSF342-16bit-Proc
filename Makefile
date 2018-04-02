@@ -4,8 +4,8 @@ TOP: TOP.v
 	iverilog -o TOP.vvp TOP.v
 programCounter: programCounter.v
 	iverilog -o programCounter.vvp programCounter.v
-MemoryDataRegister: MemoryDataRegister.v
-	iverilog -o MemoryDataRegister.vvp MemoryDataRegister.v
+memoryDataRegister: memoryDataRegister.v
+	iverilog -o memoryDataRegister.vvp memoryDataRegister.v
 dataMemory: dataMemory.v
 	iverilog -o dataMemory.vvp dataMemory.v
 instructionMemory: instructionMemory.v
