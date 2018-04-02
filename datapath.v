@@ -52,6 +52,12 @@ wire zero;
 
 wire [15:0] D_Data;
 
+//is this concatenation allowed?
+wire [15:0] IR_value;
+assign IR_value = {OPCODE, FUNCFIELD, A_ReadReg1RT, A_ReadReg2RT, A_Offset, A_RegSWLW, A_WriteRegRT_BT};
+assign instr11to0 = IR_value[11:0];
+assign instr7to0 = IR_value[7:0];
+
 
 //we can remove write_A and write_B from the controller
 controllerFSM FSM_Main(PCSrc, ALUOp, sign_extend, ALUSrcA ,ALUSrcB, ReadR1, ReadR2, RegWriteDst, MemToReg, PCBEqCond, PCBNqCond, PCWrite, MemWrite, MemRead, IRWrite, RegWrite, WriteA, WriteB, OPCODE, FUNCFIELD, clk, rst);
@@ -68,6 +74,15 @@ registerFile RF(D_ReadReg1RT, D_ReadReg2RT, D_Offset, D_RegSW, D_BT, D_MDR_OUT, 
 
 alu ALU_MAIN(ALU_out, zero, ALU_1_IN, ALU_2_IN, ALUOp);
 MUXpreALU MPA(ALU_1_IN, ALU_2_IN, PC_OUT, D_ReadReg1RT, D_BT, D_Offset,	D_ReadReg2RT, D_RegSW, D_JUMP_SE_Out , D_SE_Out, D_USE_Out, D_L1S_Out, sign_extend, ReadR1, ReadR2, ALUSrcA, ALUSrcB);
+
+sign_extend_12bto16b(D_JUMP_SE_Out, instr11to0);
+sign_extend_8bto16b(D_SE_Out, instr7to0);  
+unsign_extend_8bto16b(D_USE_Out, instr7to0);
+left_1b_shift(D_L1S_Out, D_SE_Out);
+  
+
+  
+    
 
 
 endmodule
