@@ -10,7 +10,7 @@ module tb_alu();
 	alu uut(out,z,a,b,op);
 
 	initial
-		begin
+	begin
 		#20  op=3'd0; a=16'd54; b=16'd5;
 		#20  op=3'd1; a=16'd54; b=16'd5;
 		#20  op=3'd2; a=16'd54; b=16'd5;
@@ -20,13 +20,13 @@ module tb_alu();
 		#20  op=3'd6; a=16'd54; b=16'd5;
 		#20  op=3'd7; a=16'd54; b=16'd5;
 		#20  $stop;
-		end
+	end
 
 	initial
-		begin
+	begin
 		$dumpfile("alu.vcd");
 		$dumpvars;
-		end
+	end
 
 endmodule
 
