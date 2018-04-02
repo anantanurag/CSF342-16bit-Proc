@@ -2,7 +2,10 @@
 16 Bit RISC Processor
 
 2 April 2018
+Memory and Datapath are not clocked.
+
 Shift Datapath and Control missing!!! Dont panic. Atleast try not to :)
+
 
 31 March 2018
 
