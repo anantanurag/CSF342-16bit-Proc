@@ -29,7 +29,7 @@ instructionRegister IR(OPCODE, FUNCFIELD,
 						clk, rst);
 
 dataMemory DM();
-MemoryDataRegister MDR();
+memoryDataRegister MDR();
 
 wire [15:0] D_ReadReg1RT, D_ReadReg2RT;
 wire [15:0] D_Offset, D_RegSW;
@@ -54,9 +54,11 @@ MUXpreALU MPA(ALU_1_IN, ALU_2_IN,
 				C_RegDstRead1R, C_RegDstRead2R,
 				C_ALUSrc_A, C_ALUSrc_B);
 
-alu ALU_MAIN(out,z,
-				a,b,
+alu ALU_MAIN(ALUOUT_IN,z,
+				ALU_1_IN,ALU_2_IN,
 				alu_op);
+
+ALUOut AO(ALUOUT_OUT, ALUOUT_IN, clk);
 
 
 
