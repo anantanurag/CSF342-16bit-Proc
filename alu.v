@@ -96,8 +96,8 @@ endmodule
 
 
 module ALUOut(ALUOUT_OUT, ALUOUT_IN, clk);
-output reg [15:0] PC_OUT;
-input wire [15:0] PC_IN;
+output reg [15:0] ALUOUT_OUT;
+input wire [15:0] ALUOUT_IN;
 input wire clk;
 
 always@(posedge clk)
