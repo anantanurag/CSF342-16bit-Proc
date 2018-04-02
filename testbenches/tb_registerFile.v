@@ -31,6 +31,13 @@ module tb_registerFile();
 
 	initial
 	begin
-		
+		$stop
 	end
+
+	initial
+	begin
+		$dumpfile("alu.vcd");
+		$dumpvars;
+	end
+	
 endmodule
