@@ -1,12 +1,12 @@
-module memoryDataRegister(D_OUT, D_IN, clk);
+module memoryDataRegister(MDR_OUT, MDR_IN, clk);
 	
-	output reg [15:0] D_OUT;
+	output reg [15:0] MDR_OUT;
 	
-	input wire [15:0] D_IN;
+	input wire [15:0] MDR_IN;
 	input wire clk;
 	
 	always@(posedge clk)
 	begin
-		D_OUT <= D_IN;
+		MDR_OUT <= MDR_IN;
 	end
 endmodule
