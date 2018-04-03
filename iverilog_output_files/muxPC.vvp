@@ -1,0 +1,50 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0xc3b730 .scope module, "muxPC" "muxPC" 2 1;
+ .timescale 0 0;
+v0xc3b850_0 .net "ALUOut_result", 15 0, C4<zzzzzzzzzzzzzzzz>; 0 drivers
+v0xc7dd60_0 .net "ALU_result", 15 0, C4<zzzzzzzzzzzzzzzz>; 0 drivers
+v0xc7de00_0 .net "C_PCSource", 1 0, C4<zz>; 0 drivers
+v0xc7dea0_0 .var "PC_IN", 15 0;
+v0xc7df50_0 .net "RF_result", 15 0, C4<zzzzzzzzzzzzzzzz>; 0 drivers
+E_0xc4ce10 .event edge, v0xc7de00_0, v0xc7dd60_0, v0xc3b850_0, v0xc7df50_0;
+    .scope S_0xc3b730;
+T_0 ;
+    %wait E_0xc4ce10;
+    %load/v 8, v0xc7de00_0, 2;
+    %cmpi/u 8, 0, 2;
+    %jmp/1 T_0.0, 6;
+    %cmpi/u 8, 1, 2;
+    %jmp/1 T_0.1, 6;
+    %cmpi/u 8, 2, 2;
+    %jmp/1 T_0.2, 6;
+    %ix/load 0, 16, 0;
+    %assign/v0 v0xc7dea0_0, 0, 0;
+    %jmp T_0.4;
+T_0.0 ;
+    %load/v 8, v0xc7dd60_0, 16;
+    %ix/load 0, 16, 0;
+    %assign/v0 v0xc7dea0_0, 0, 8;
+    %jmp T_0.4;
+T_0.1 ;
+    %load/v 8, v0xc3b850_0, 16;
+    %ix/load 0, 16, 0;
+    %assign/v0 v0xc7dea0_0, 0, 8;
+    %jmp T_0.4;
+T_0.2 ;
+    %load/v 8, v0xc7df50_0, 16;
+    %ix/load 0, 16, 0;
+    %assign/v0 v0xc7dea0_0, 0, 8;
+    %jmp T_0.4;
+T_0.4 ;
+    %jmp T_0;
+    .thread T_0, $push;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "muxPC.v";

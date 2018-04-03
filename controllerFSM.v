@@ -512,7 +512,7 @@ EX_LW_SW	:begin
 				MemRead		<= 1'b0;
 				IRWrite		<= 1'b0;
 				RegWrite 	<= 1'b0;
-				
+				end
 MEM_RTYPE	:begin
 				PCSrc		<= 2'bxx;
 				ALUOp		<= 3'bxxx;
