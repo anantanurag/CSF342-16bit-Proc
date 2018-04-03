@@ -307,7 +307,7 @@ EX_SUBI2	:begin
 			end
 EX_SLL		:begin // NOT MADE YET
 				PCSrc		<= 2'bxx;
-				ALUOp		<= 3'b001;
+				ALUOp		<= 3'b010;
 				sign_extend	<= 1'b0;
 				ALUSrcA		<= 1'b1;
 				ALUSrcB		<= 3'b010;
@@ -326,7 +326,7 @@ EX_SLL		:begin // NOT MADE YET
 			end
 EX_SRL		:begin // NOT MADE YET
 				PCSrc		<= 2'bxx;
-				ALUOp		<= 3'b001;
+				ALUOp		<= 3'b011;
 				sign_extend	<= 1'b0;
 				ALUSrcA		<= 1'b1;
 				ALUSrcB		<= 3'b010;
@@ -345,7 +345,7 @@ EX_SRL		:begin // NOT MADE YET
 			end
 EX_SRA		:begin // NOT MADE YET
 				PCSrc		<= 2'bxx;
-				ALUOp		<= 3'b001;
+				ALUOp		<= 3'b111;
 				sign_extend	<= 1'b0;
 				ALUSrcA		<= 1'b1;
 				ALUSrcB		<= 3'b010;
