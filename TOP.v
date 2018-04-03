@@ -7,6 +7,8 @@
 `include "MUXpreALU.v"
 `include "registerFile.v"
 `include "controllerFSM.v"
+`include "concat10.v"
+`include "concat11.v"
 
 
 module TOP(clk, rst);
