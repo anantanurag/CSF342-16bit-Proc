@@ -1,0 +1,236 @@
+$date
+	Tue Apr 03 09:28:43 2018
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module concat10 $end
+$var wire 2 ! instr10to11 [1:0] $end
+$var wire 4 " c10out [3:0] $end
+$upscope $end
+$scope module concat11 $end
+$var wire 2 # instr9to8 [1:0] $end
+$var wire 4 $ c11out [3:0] $end
+$upscope $end
+$scope module tb_registerFile $end
+$var wire 16 % D_RegSW [15:0] $end
+$var wire 16 & D_ReadReg2RT [15:0] $end
+$var wire 16 ' D_ReadReg1RT [15:0] $end
+$var wire 16 ( D_Offset [15:0] $end
+$var wire 16 ) D_BT [15:0] $end
+$var reg 4 * A_Offset [3:0] $end
+$var reg 4 + A_ReadReg1RT [3:0] $end
+$var reg 4 , A_ReadReg2RT [3:0] $end
+$var reg 4 - A_RegSWLW [3:0] $end
+$var reg 4 . A_WriteRegRT_BT [3:0] $end
+$var reg 1 / C_MemToReg $end
+$var reg 1 0 C_RegDstWrite $end
+$var reg 1 1 C_RegWrite $end
+$var reg 16 2 D_ALU_IN [15:0] $end
+$var reg 16 3 D_MDR_IN [15:0] $end
+$var reg 1 4 clk $end
+$var reg 1 5 rst $end
+$scope module uut $end
+$var wire 4 6 A_Offset [3:0] $end
+$var wire 4 7 A_ReadReg1RT [3:0] $end
+$var wire 4 8 A_ReadReg2RT [3:0] $end
+$var wire 4 9 A_RegSWLW [3:0] $end
+$var wire 4 : A_WriteRegRT_BT [3:0] $end
+$var wire 1 / C_MemToReg $end
+$var wire 1 0 C_RegDstWrite $end
+$var wire 1 1 C_RegWrite $end
+$var wire 16 ; D_ALU_IN [15:0] $end
+$var wire 16 < D_MDR_IN [15:0] $end
+$var wire 1 4 clk $end
+$var wire 1 5 rst $end
+$var reg 16 = D_BT [15:0] $end
+$var reg 16 > D_Offset [15:0] $end
+$var reg 16 ? D_ReadReg1RT [15:0] $end
+$var reg 16 @ D_ReadReg2RT [15:0] $end
+$var reg 16 A D_RegSW [15:0] $end
+$var reg 4 B a_write [3:0] $end
+$var reg 16 C d_write [15:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx C
+bx B
+bx A
+bx @
+bx ?
+bx >
+bx =
+bx <
+bx ;
+bx :
+bx 9
+bx 8
+bx 7
+bx 6
+x5
+04
+bx 3
+bx 2
+x1
+x0
+x/
+bx .
+bx -
+bx ,
+bx +
+bx *
+bx )
+bx (
+bx '
+bx &
+bx %
+b11zz $
+bz #
+b10zz "
+bz !
+$end
+#5
+15
+#10
+14
+#20
+04
+#30
+14
+#32
+b0 )
+b0 =
+b0 %
+b0 A
+b0 (
+b0 >
+b0 &
+b0 @
+b0 '
+b0 ?
+b1100001001 C
+b1110 B
+0/
+11
+10
+b1100001001 2
+b1100001001 ;
+b10011010 3
+b10011010 <
+b1110 .
+b1110 :
+b111 -
+b111 9
+b10 *
+b10 6
+b110 ,
+b110 8
+b11 +
+b11 7
+05
+#40
+04
+#50
+b1100001001 )
+b1100001001 =
+14
+#60
+04
+#70
+14
+#80
+04
+#87
+15
+#90
+14
+#100
+04
+#110
+14
+#114
+b0 )
+b0 =
+b10011010 C
+1/
+05
+#120
+04
+#130
+b10011010 )
+b10011010 =
+14
+#140
+04
+#150
+14
+#160
+04
+#169
+15
+#170
+14
+#180
+04
+#190
+14
+#196
+b0 )
+b0 =
+b111 B
+00
+05
+#200
+04
+#210
+b10011010 %
+b10011010 A
+14
+#220
+04
+#230
+14
+#240
+04
+#250
+14
+#251
+15
+#260
+04
+#270
+14
+#278
+b0 %
+b0 A
+b1100001001 C
+b1110 B
+0/
+10
+05
+#280
+04
+#290
+b1100001001 )
+b1100001001 =
+14
+#300
+04
+#310
+14
+#320
+04
+#330
+14
+#333
+15
+#340
+04
+#350
+14
+#360
