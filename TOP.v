@@ -57,11 +57,11 @@ or O2(PCEnableWrite, O1_Out, PCWrite);
 
 muxPC MPC(PC_IN, ALUOUT_IN, ALUOUT_OUT, D_BT, PCSrc);
 
-programCounter PC(PC_OUT, PC_IN, PCEnableWrite, clk);
+programCounter ProgCount(PC_OUT, PC_IN, PCEnableWrite, clk);
 
 wire [15:0] D_Instruction;
 
-instructionMemory IM(D_Instruction, PC_OUT, 1'b1);
+instructionMemory IM(D_Instruction, PC_OUT, 1'b1, rst);
 
 wire [1:0] A_2bit_Offset, A_2bit_RegSWLW;
 wire [3:0] A_Offset, A_RegSWLW;
@@ -73,8 +73,8 @@ concat10 c10(A_Offset, A_2bit_Offset);
 wire [3:0] A_ReadReg1RT, A_ReadReg2RT;
 
 wire [3:0] A_WriteRegRT_BT;
-
-instructionRegister IR(OPCODE, FUNCFIELD,
+wire [15:0] IR_InstructionOut;
+instructionRegister IR(IR_InstructionOut ,OPCODE, FUNCFIELD,
 						A_ReadReg1RT, A_ReadReg2RT,
 						A_2bit_Offset, A_2bit_RegSWLW,
 						A_WriteRegRT_BT,
@@ -106,15 +106,20 @@ registerFile RF(D_ReadReg1RT, D_ReadReg2RT,
 
 wire [15:0] ALU_1_IN, ALU_2_IN;
 wire ZERO_OUT;
+wire [15:0] D_JUMP_SE_Out, D_SE_Out, D_USE_Out, D_L1S_Out;
+sign_extend_12bto16b se12t16b(D_JUMP_SE_Out, IR_InstructionOut[11:0]);
+sign_extend_8bto16b se8t16b(D_SE_Out, IR_InstructionOut[7:0]);
+unsign_extend_8bto16b use8t16b(D_USE_Out, IR_InstructionOut[7:0]);
+left_1b_shift l1bs(D_L1S_Out, D_SE_Out);
 
 MUXpreALU MPA(ALU_1_IN, ALU_2_IN,
-				PC,
+				PC_OUT,
 				D_ReadReg1RT, D_BT, D_Offset,
 				D_ReadReg2RT, D_RegSW,
 				D_JUMP_SE_Out , D_SE_Out, D_USE_Out, D_L1S_Out, 
-				C_SignExtend,
-				C_RegDstRead1R, C_RegDstRead2R,
-				C_ALUSrc_A, C_ALUSrc_B);
+				sign_extend,
+				ReadR1, ReadR2,
+				ALUSrcA, ALUSrcB);
 
 
 

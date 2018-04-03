@@ -1,4 +1,5 @@
-module instructionRegister(		OPCODE, FUNCFIELD,
+module instructionRegister(		D_Instr,
+								OPCODE, FUNCFIELD,
 								A_ReadReg1RT, A_ReadReg2RT,
 								A_Offset, A_RegSWLW,
 								A_WriteRegRT_BT,
@@ -7,7 +8,7 @@ module instructionRegister(		OPCODE, FUNCFIELD,
 								clk, rst
 								);
 
-
+	output reg[15:0] D_Instr;
 	output reg [3:0] OPCODE, FUNCFIELD;
 	output reg [3:0] A_ReadReg1RT, A_ReadReg2RT;
 	output reg [1:0] A_Offset, A_RegSWLW;
@@ -32,6 +33,7 @@ module instructionRegister(		OPCODE, FUNCFIELD,
 		else begin
 			if (C_IRWrite == 1) 
 			begin
+				D_Instr <= D_MemData;
 				OPCODE <= D_MemData[15:12];
 				FUNCFIELD <= D_MemData[3:0];
 				A_ReadReg1RT <= D_MemData[7:4];
