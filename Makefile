@@ -1,5 +1,7 @@
-all: muxPC TOP programCounter MemoryDataRegister dataMemory instructionMemory alu control regfile muxprealu instructionRegister
+all: test muxPC TOP programCounter MemoryDataRegister dataMemory instructionMemory alu control regfile muxprealu instructionRegister
 	# 
+test:
+	iverilog -o tb_TOP.vvp tb_TOP.v
 muxPC:
 	iverilog -o iverilog_output_files/muxPC.vvp muxPC.v
 TOP: TOP.v

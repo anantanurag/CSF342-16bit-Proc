@@ -73,13 +73,19 @@ parameter OP_LW = 4'b0001;
 parameter OP_SW = 4'b0010;
 
 // To update the state
-always @(posedge clk or rst) 
+// initial
+// CurrentState <= I_FETCH;
+
+
+always @(posedge clk, posedge rst) 
 begin
 	if (rst) begin
 				CurrentState <= I_FETCH;
-				NextState <= I_FETCH;
+				// NextState <= I_FETCH;
+
 			end
-	else 	 CurrentState <= NextState;
+	else 	 begin CurrentState <= NextState;
+	end
 end
 
 // To calculate the next state
