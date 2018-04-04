@@ -75,7 +75,7 @@ module TOP(clk, rst);
 
 	muxPC MPC(PC_IN, ALUOUT_IN, ALUOUT_OUT, D_BT, PCSrc);
 
-	programCounter ProgCount(PC_OUT, PC_IN, PCEnableWrite, clk);
+	programCounter ProgCount(PC_OUT, PC_IN, PCEnableWrite, clk, rst);
 
 	instructionMemory IM(D_Instruction, PC_OUT, 1'b1, rst);
 

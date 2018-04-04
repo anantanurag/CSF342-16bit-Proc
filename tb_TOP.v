@@ -1,3 +1,4 @@
+`timescale 1ns/10ps
 `include "TOP.v"
 
 module tb_TOP();
