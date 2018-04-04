@@ -168,7 +168,7 @@ I_FETCH		:begin
 				PCWrite		<= 1'b1;
 				MemWrite	<= 1'b0;
 				MemRead		<= 1'b0;
-				IRWrite		<= 1'b0;
+				IRWrite		<= 1'b1;
 				RegWrite 	<= 1'b0;
 				
 			end
