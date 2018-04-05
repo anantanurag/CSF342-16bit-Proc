@@ -585,7 +585,7 @@ WRITEBACK	:begin
 				ReadR1		<= 2'bxx;
 				ReadR2		<= 1'bx;
 				RegWriteDst	<= 1'b1;
-				MemToReg	<= 1'bx;
+				MemToReg	<= 1'b1;
 				PCBEqCond	<= 1'bx;
 				PCBNqCond	<= 1'bx;
 				PCWrite		<= 1'b0;
