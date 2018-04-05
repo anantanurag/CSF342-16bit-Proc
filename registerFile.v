@@ -25,21 +25,11 @@ input wire clk, rst;
 reg [15:0] memory[0:15];
 reg [3:0] a_write;
 reg [15:0] d_write;
-	
+
 initial 
 $readmemh("rf_data.txt",memory);
-
-always@(posedge clk or rst)
+always@(*)
 begin
-	memory[4'b0000] = 16'b0000_0000_0000_0000;
-	if (rst == 0) 
-	begin
-		D_ReadReg1RT <= memory[A_ReadReg1RT];
-		D_ReadReg2RT <= memory[A_ReadReg2RT];
-		D_Offset <= memory[A_Offset];
-		D_RegSW <= memory[A_RegSWLW];
-		D_BT <= memory[A_WriteRegRT_BT];
-
 		// Selecting Address to write to RF
 		if (C_RegDstWrite == 1)
 		begin
@@ -65,9 +55,21 @@ begin
 			a_write = 4'dx;
 			d_write = 16'dx;
 		end
+end
+	
+always@(posedge clk or rst)
+begin
+	memory[4'b0000] = 16'b0000_0000_0000_0000;
+	if (rst == 0) 
+	begin
+		D_ReadReg1RT <= memory[A_ReadReg1RT];
+		D_ReadReg2RT <= memory[A_ReadReg2RT];
+		D_Offset <= memory[A_Offset];
+		D_RegSW <= memory[A_RegSWLW];
+		D_BT <= memory[A_WriteRegRT_BT];
 	end
-	/*else begin
-		memory[4'd0] <= 16'd0;
+	//else begin
+		/*memory[4'd0] <= 16'd0;
 		memory[4'd1] <= 16'd0;
 		memory[4'd2] <= 16'd0;
 		memory[4'd3] <= 16'd0;
@@ -83,8 +85,8 @@ begin
 		memory[4'd13] <= 16'd0;
 		memory[4'd14] <= 16'd0;
 		memory[4'd15] <= 16'd0;
-	end
-	*/
+	end */
+	
 end
 
 endmodule

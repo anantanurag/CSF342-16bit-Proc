@@ -24,7 +24,7 @@ module TOP(clk, rst);
 	wire [2:0] ALUSrcB;
 	wire [1:0] ReadR1;
 	wire ReadR2;
-	wire RegWriteDst;
+	wire RegDstWrite;
 	wire MemToReg;
 	wire PCBEqCond, PCBNqCond;
 	wire PCWrite;
@@ -59,7 +59,7 @@ module TOP(clk, rst);
 
 	controllerFSM FSM_Main(PCSrc, ALU_OP, sign_extend, 
 						ALUSrcA ,ALUSrcB, ReadR1, ReadR2, 
-						RegWriteDst, MemToReg, PCBEqCond, 
+						RegDstWrite, MemToReg, PCBEqCond, 
 						PCBNqCond, PCWrite, MemWrite, 
 						MemRead, IRWrite, RegWrite, 
 						OPCODE,FUNCFIELD, clk, rst);
@@ -101,7 +101,7 @@ module TOP(clk, rst);
 					A_ReadReg1RT, A_ReadReg2RT,
 					A_Offset, A_RegSWLW,
 					A_WriteRegRT_BT,
-					C_RegDstWrite, C_RegWrite, C_MemToReg,
+					RegDstWrite, RegWrite, MemToReg,
 					clk, rst);
 
 	sign_extend_12bto16b se12t16b(D_JUMP_SE_Out, IR_InstructionOut[11:0]);
