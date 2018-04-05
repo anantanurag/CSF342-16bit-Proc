@@ -25,6 +25,9 @@ input wire clk, rst;
 reg [15:0] memory[0:15];
 reg [3:0] a_write;
 reg [15:0] d_write;
+	
+initial 
+$readmemh("rf_data.txt",memory);
 
 always@(posedge clk or rst)
 begin
@@ -63,7 +66,7 @@ begin
 			d_write = 16'dx;
 		end
 	end
-	else begin
+	/*else begin
 		memory[4'd0] <= 16'd0;
 		memory[4'd1] <= 16'd0;
 		memory[4'd2] <= 16'd0;
@@ -81,7 +84,7 @@ begin
 		memory[4'd14] <= 16'd0;
 		memory[4'd15] <= 16'd0;
 	end
-	
+	*/
 end
 
 endmodule
