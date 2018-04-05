@@ -483,7 +483,7 @@ EX_BNQ		:begin
 				
 			end
 EX_JMP		:begin
-				PCSrc		<= 2'b01;
+				PCSrc		<= 2'b00;
 				ALUOp		<= 3'b000;
 				sign_extend	<= 1'bx;
 				ALUSrcA		<= 1'b0;
