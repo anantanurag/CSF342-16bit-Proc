@@ -483,7 +483,7 @@ EX_BNQ		:begin
 				
 			end
 EX_JMP		:begin
-				PCSrc		<= 2'b01;
+				PCSrc		<= 2'b00;
 				ALUOp		<= 3'b000;
 				sign_extend	<= 1'bx;
 				ALUSrcA		<= 1'b0;
@@ -585,7 +585,7 @@ WRITEBACK	:begin
 				ReadR1		<= 2'bxx;
 				ReadR2		<= 1'bx;
 				RegWriteDst	<= 1'b1;
-				MemToReg	<= 1'bx;
+				MemToReg	<= 1'b1;
 				PCBEqCond	<= 1'bx;
 				PCBNqCond	<= 1'bx;
 				PCWrite		<= 1'b0;

@@ -52,7 +52,7 @@ begin
 
 	case(C_ALUSrc_B)
 	3'b000 	: 	ALU_2_IN <= M2_Out;
-	3'b001 	: 	ALU_2_IN <= 2'b10;
+	3'b001 	: 	ALU_2_IN <= 2'b01;
 	3'b010 	: 	ALU_2_IN <= M3_Out;
 	3'b011 	: 	ALU_2_IN <= D_L1S_Out;
 	3'b100 	: 	ALU_2_IN <= D_JUMP_SE_Out;

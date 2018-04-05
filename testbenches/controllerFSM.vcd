@@ -1,0 +1,166 @@
+$date
+	Thu Apr 05 17:43:47 2018
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	10ps
+$end
+$scope module tb_controllerFSM $end
+$var wire 1 ! sign_extend $end
+$var wire 1 " RegWriteDst $end
+$var wire 1 # RegWrite $end
+$var wire 1 $ ReadR2 $end
+$var wire 2 % ReadR1 [1:0] $end
+$var wire 1 & PCWrite $end
+$var wire 2 ' PCSrc [1:0] $end
+$var wire 1 ( PCBNqCond $end
+$var wire 1 ) PCBEqCond $end
+$var wire 1 * MemWrite $end
+$var wire 1 + MemToReg $end
+$var wire 1 , MemRead $end
+$var wire 1 - IRWrite $end
+$var wire 3 . ALUSrcB [2:0] $end
+$var wire 1 / ALUSrcA $end
+$var wire 3 0 ALUOp [2:0] $end
+$var reg 1 1 clk $end
+$var reg 4 2 func_field [3:0] $end
+$var reg 4 3 opcode [3:0] $end
+$var reg 1 4 rst $end
+$scope module uut $end
+$var wire 1 1 clk $end
+$var wire 4 5 func_field [3:0] $end
+$var wire 4 6 opcode [3:0] $end
+$var wire 1 4 rst $end
+$var reg 3 7 ALUOp [2:0] $end
+$var reg 1 / ALUSrcA $end
+$var reg 3 8 ALUSrcB [2:0] $end
+$var reg 6 9 CurrentState [5:0] $end
+$var reg 1 - IRWrite $end
+$var reg 1 , MemRead $end
+$var reg 1 + MemToReg $end
+$var reg 1 * MemWrite $end
+$var reg 6 : NextState [5:0] $end
+$var reg 1 ) PCBEqCond $end
+$var reg 1 ( PCBNqCond $end
+$var reg 2 ; PCSrc [1:0] $end
+$var reg 1 & PCWrite $end
+$var reg 2 < ReadR1 [1:0] $end
+$var reg 1 $ ReadR2 $end
+$var reg 1 # RegWrite $end
+$var reg 1 " RegWriteDst $end
+$var reg 1 ! sign_extend $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx <
+bx ;
+b0 :
+bx 9
+bx 8
+bx 7
+b11 6
+bx 5
+04
+b11 3
+bx 2
+01
+bx 0
+x/
+bx .
+x-
+x,
+x+
+x*
+x)
+x(
+bx '
+x&
+bx %
+x$
+x#
+x"
+x!
+$end
+#500
+0#
+1-
+0,
+0*
+1&
+0(
+0)
+b1 .
+b1 8
+0/
+b0 0
+b0 7
+b0 '
+b0 ;
+b1 :
+b0 9
+14
+#1000
+11
+#2000
+01
+04
+#3000
+0-
+0&
+0$
+b0 %
+b0 <
+bx 0
+bx 7
+bx '
+bx ;
+b1000 :
+b1 9
+11
+#4000
+01
+#5000
+1&
+x$
+bx %
+bx <
+b100 .
+b100 8
+b0 0
+b0 7
+b1 '
+b1 ;
+b0 :
+b1000 9
+11
+#6000
+01
+#7000
+1-
+b1 .
+b1 8
+b0 '
+b0 ;
+b1 :
+b0 9
+11
+#8000
+01
+#9000
+0-
+0&
+0$
+b0 %
+b0 <
+bx 0
+bx 7
+bx '
+bx ;
+b1000 :
+b1 9
+11
+#10000
