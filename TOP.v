@@ -93,7 +93,7 @@ module TOP(clk, rst);
 	dataMemory DM(MDR_IN, ALUOUT_OUT, D_RegSW, MemRead, MemWrite, rst);
 
 	memoryDataRegister MDR(MDR_OUT, MDR_IN, clk);
-
+wire [15:0] memory[15:0];
 	registerFile RF(D_ReadReg1RT, D_ReadReg2RT,
 					D_Offset, D_RegSW,
 					D_BT,

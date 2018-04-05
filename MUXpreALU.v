@@ -29,13 +29,13 @@ begin
 	2'b00 	:	M1_Out <= D_ReadReg1RT;
 	2'b01 	:	M1_Out <= D_BT;
 	2'b10 	:	M1_Out <= D_Offset;
-	default :	M1_Out <= 16'd0;
+	default :	M1_Out <= 16'd1;
 	endcase	
 
 	case(C_RegDstRead2R)
 	1'b0 	:	M2_Out <= D_ReadReg2RT;
 	1'b1 	:	M2_Out <= D_RegSW;
-	default : 	M2_Out <= 16'd0;
+	default : 	M2_Out <= 16'd1;
 	endcase
 
 	case(C_SignExtend)
@@ -47,7 +47,7 @@ begin
 	case(C_ALUSrc_A)
 	1'b0 	:	ALU_1_IN <= PC;
 	1'b1 	: 	ALU_1_IN <= M1_Out;
-	default : 	ALU_1_IN <= 16'd0;
+	default : 	ALU_1_IN <= 16'd1;
 	endcase 
 
 	case(C_ALUSrc_B)
@@ -56,7 +56,7 @@ begin
 	3'b010 	: 	ALU_2_IN <= M3_Out;
 	3'b011 	: 	ALU_2_IN <= D_L1S_Out;
 	3'b100 	: 	ALU_2_IN <= D_JUMP_SE_Out;
-	default : 	ALU_2_IN <= 16'd0;
+	default : 	ALU_2_IN <= 16'd1;
 	endcase
 end
 
@@ -76,8 +76,8 @@ endmodule
 
 module unsign_extend_8bto16b(USE_Out, instr7to0);
 output wire [15:0] USE_Out;
-output wire [7:0] instr7to0;
-assign USE_Out = {8'b0000_0000, instr7to0};
+input wire [7:0] instr7to0;
+assign USE_Out = {8'b0000_0000, instr7to0[7:0]};
 endmodule
 
 module left_1b_shift(L1S_Out, SE_Out);

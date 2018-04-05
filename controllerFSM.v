@@ -202,7 +202,7 @@ EX_ADD 		:begin
 				ALUOp		<= 3'b000;
 				sign_extend	<= 1'bx;
 				ALUSrcA		<= 1'b1;
-				ALUSrcB		<= 3'b010;
+				ALUSrcB		<= 3'b000;
 				ReadR1		<= 2'b00;
 				ReadR2		<= 1'b0;
 				RegWriteDst	<= 1'b1;
@@ -527,15 +527,15 @@ MEM_RTYPE	:begin
 				ALUSrcB		<= 3'bxxx;
 				ReadR1		<= 2'bxx;
 				ReadR2		<= 1'bx;
-				RegWriteDst	<= 1'bx;
-				MemToReg	<= 1'bx;
+				RegWriteDst	<= 1'b1;
+				MemToReg	<= 1'b0;
 				PCBEqCond	<= 1'bx;
 				PCBNqCond	<= 1'bx;
 				PCWrite		<= 1'b0;
 				MemWrite	<= 1'b0;
 				MemRead		<= 1'b0;
 				IRWrite		<= 1'b0;
-				RegWrite 	<= 1'b0;
+				RegWrite 	<= 1'b1;
 				
 			end
 MEM_LW		:begin

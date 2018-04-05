@@ -19,7 +19,7 @@ module tb_TOP();
 		#005 rst = 1'b1;
 		#015 rst = 1'b0;
 		// #500 rst = 1'b1;
-		#1000 $stop;
+		#1000 $finish;
 	end
 
 	initial
