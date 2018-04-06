@@ -313,12 +313,12 @@ EX_SUBI2	:begin
 			end
 EX_SLL		:begin // NOT MADE YET
 				PCSrc		<= 2'bxx;
-				ALUOp		<= 3'b010;
+				ALUOp		<= 3'b011;
 				sign_extend	<= 1'b0;
 				ALUSrcA		<= 1'b1;
-				ALUSrcB		<= 3'b010;
+				ALUSrcB		<= 3'b101;
 				ReadR1		<= 2'b01;
-				ReadR2		<= 1'b0;
+				ReadR2		<= 1'bx;
 				RegWriteDst	<= 1'b1;
 				MemToReg	<= 1'bx;
 				PCBEqCond	<= 1'b0;
@@ -332,12 +332,12 @@ EX_SLL		:begin // NOT MADE YET
 			end
 EX_SRL		:begin // NOT MADE YET
 				PCSrc		<= 2'bxx;
-				ALUOp		<= 3'b011;
+				ALUOp		<= 3'b010;
 				sign_extend	<= 1'b0;
 				ALUSrcA		<= 1'b1;
-				ALUSrcB		<= 3'b010;
+				ALUSrcB		<= 3'b101;
 				ReadR1		<= 2'b01;
-				ReadR2		<= 1'b0;
+				ReadR2		<= 1'bx;
 				RegWriteDst	<= 1'b1;
 				MemToReg	<= 1'bx;
 				PCBEqCond	<= 1'b0;
@@ -354,9 +354,9 @@ EX_SRA		:begin // NOT MADE YET
 				ALUOp		<= 3'b111;
 				sign_extend	<= 1'b0;
 				ALUSrcA		<= 1'b1;
-				ALUSrcB		<= 3'b010;
+				ALUSrcB		<= 3'b101;
 				ReadR1		<= 2'b01;
-				ReadR2		<= 1'b0;
+				ReadR2		<= 1'bx;
 				RegWriteDst	<= 1'b1;
 				MemToReg	<= 1'bx;
 				PCBEqCond	<= 1'b0;

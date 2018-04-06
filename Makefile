@@ -2,6 +2,8 @@ all: test muxPC TOP programCounter MemoryDataRegister dataMemory instructionMemo
 	# 
 test:
 	iverilog -o tb_TOP.vvp tb_TOP.v
+	vvp tb_TOP.vvp
+	gtkwave TOP.vcd
 muxPC:
 	iverilog -o iverilog_output_files/muxPC.vvp muxPC.v
 TOP: TOP.v
@@ -24,7 +26,7 @@ regfile: registerFile.v
 	iverilog -o iverilog_output_files/registerFile.vvp registerFile.v
 control: controllerFSM.v
 	iverilog -o iverilog_output_files/controllerFSM.vvp controllerFSM.v
-graph: controllerFSM.vvp controllerFSM.vcd
-	gtkwave controllerFSM.vcd
+graph: tb_TOP.vvp TOP.vcd
+	gtkwave TOP.vcd
 clean:
 	rm -f *.vvp

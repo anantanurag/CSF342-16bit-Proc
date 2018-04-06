@@ -56,6 +56,7 @@ begin
 	3'b010 	: 	ALU_2_IN <= M3_Out;
 	3'b011 	: 	ALU_2_IN <= D_L1S_Out;
 	3'b100 	: 	ALU_2_IN <= D_JUMP_SE_Out;
+	3'b101 	: 	ALU_2_IN <= D_JUMP_SE_Out[7:4];
 	default : 	ALU_2_IN <= 16'd1;
 	endcase
 end
