@@ -546,7 +546,7 @@ MEM_LW		:begin
 				ALUSrcB		<= 3'bxxx;
 				ReadR1		<= 2'bxx;
 				ReadR2		<= 1'bx;
-				RegWriteDst	<= 1'bx;
+				RegWriteDst	<= 1'b0;
 				MemToReg	<= 1'bx;
 				PCBEqCond	<= 1'bx;
 				PCBNqCond	<= 1'bx;
