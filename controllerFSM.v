@@ -450,9 +450,9 @@ EX_BEQ		:begin
 				sign_extend	<= 1'bx;
 				ALUSrcA		<= 1'b1;
 				ALUSrcB		<= 3'b000;
-				ReadR1		<= 2'b01;
-				ReadR2		<= 1'bx;
-				RegWriteDst	<= 1'bx;
+				ReadR1		<= 2'b00;
+				ReadR2		<= 1'b0;
+				RegWriteDst	<= 1'b1;
 				MemToReg	<= 1'bx;
 				PCBEqCond	<= 1'b1;
 				PCBNqCond	<= 1'b0;
@@ -469,9 +469,9 @@ EX_BNQ		:begin
 				sign_extend	<= 1'bx;
 				ALUSrcA		<= 1'b1;
 				ALUSrcB		<= 3'b000;
-				ReadR1		<= 2'b01;
-				ReadR2		<= 1'bx;
-				RegWriteDst	<= 1'bx;
+				ReadR1		<= 2'b00;
+				ReadR2		<= 1'b0;
+				RegWriteDst	<= 1'b1;
 				MemToReg	<= 1'bx;
 				PCBEqCond	<= 1'b0;
 				PCBNqCond	<= 1'b1;
