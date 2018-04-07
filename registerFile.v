@@ -53,10 +53,10 @@ begin
 		begin
 			memory[a_write] = d_write;
 		end
-		else begin
-			a_write = 4'dx;
-			d_write = 16'dx;
-		end
+		//else begin
+		//	a_write = 4'd0;
+		//	d_write = 16'd99;
+		//end
 end
 	
 always@(posedge clk or rst)
