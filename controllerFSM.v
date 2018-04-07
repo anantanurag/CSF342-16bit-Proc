@@ -445,7 +445,7 @@ EX_ORI		:begin
 				
 			end
 EX_BEQ		:begin
-				PCSrc		<= 2'b00;
+				PCSrc		<= 2'b10;
 				ALUOp		<= 3'b001;
 				sign_extend	<= 1'bx;
 				ALUSrcA		<= 1'b1;
@@ -464,7 +464,7 @@ EX_BEQ		:begin
 				
 			end
 EX_BNQ		:begin
-				PCSrc		<= 2'b00;
+				PCSrc		<= 2'b10;
 				ALUOp		<= 3'b001;
 				sign_extend	<= 1'bx;
 				ALUSrcA		<= 1'b1;
