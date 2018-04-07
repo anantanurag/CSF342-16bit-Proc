@@ -389,12 +389,12 @@ EX_NAND		:begin
 			end
 EX_NANDI	:begin
 				PCSrc		<= 2'bxx;
-				ALUOp		<= 3'b010;
-				sign_extend	<= 1'bx;
+				ALUOp		<= 3'b100;
+				sign_extend	<= 1'b1;
 				ALUSrcA		<= 1'b1;
 				ALUSrcB		<= 3'b010;
 				ReadR1		<= 2'b01;
-				ReadR2		<= 1'bx;
+				ReadR2		<= 1'b0;
 				RegWriteDst	<= 1'b1;
 				MemToReg	<= 1'bx;
 				PCBEqCond	<= 1'b0;
