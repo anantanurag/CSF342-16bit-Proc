@@ -370,7 +370,7 @@ EX_SRA		:begin // NOT MADE YET
 			end
 EX_NAND		:begin
 				PCSrc		<= 2'bxx;
-				ALUOp		<= 3'b010;
+				ALUOp		<= 3'b100;
 				sign_extend	<= 1'bx;
 				ALUSrcA		<= 1'b1;
 				ALUSrcB		<= 3'b000;
